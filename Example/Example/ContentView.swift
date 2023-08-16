@@ -18,7 +18,7 @@ struct ContentView: View {
     var body: some View {
         VStack {
             Spacer()
-            VStack(spacing: 40) {
+            VStack(spacing: Constant.verticalItemSpacing) {
                 Button("Icon and Title") {
                     showIconAndTitle.toggle()
                     showTitleAndButton = false
@@ -69,7 +69,7 @@ struct ContentView: View {
         let iconConfiguration = IconConfiguration(image: .init(systemName: "star"),
                                                   color: .white,
                                                   position: .trailing,
-                                                  size: .init(width: 60, height: 60))
+                                                  size: Constant.customIconSize)
         let titleConfiguration = TitleConfiguration(text: "Added to Favorites",
                                                     color: .purple,
                                                     font: .headline.italic())
@@ -87,6 +87,11 @@ struct ContentView: View {
                                                      general: generalConfiguration)
         return AirHUDConfiguration(mode: mode)
     }
+}
+
+private enum Constant {
+    static let verticalItemSpacing = 40.0
+    static let customIconSize = CGSize(width: 60, height: 60)
 }
 
 struct ContentView_Previews: PreviewProvider {
