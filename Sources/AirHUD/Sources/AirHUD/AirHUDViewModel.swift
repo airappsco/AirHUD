@@ -10,7 +10,15 @@ import SwiftUI
 
 protocol AirHUDViewModelObservable: ObservableObject {
     var isPresented: Binding<Bool> { get }
-    var configuration: AirHUDConfiguration { get }
+    
+    var mode: AirHUDMode { get }
+    var icon: IconConfiguration { get }
+    var title: TitleConfiguration { get }
+    var subtitle: SubtitleConfiguration? { get }
+    var button: ButtonConfiguration? { get }
+    var dismiss: DismissConfiguration { get }
+    var general: GeneralConfiguration { get }
+    
     func runAutoDismissIfNeeded()
     func show()
     func hide()
@@ -18,9 +26,38 @@ protocol AirHUDViewModelObservable: ObservableObject {
 
 final class AirHUDViewModel: AirHUDViewModelObservable {
     
-    private(set) var isPresented: Binding<Bool>
-    private(set) var configuration: AirHUDConfiguration
+    let isPresented: Binding<Bool>
+    let configuration: AirHUDConfiguration
+    
     private var timer: Timer?
+    
+    var mode: AirHUDMode {
+        configuration.mode
+    }
+    
+    var icon: IconConfiguration {
+        configuration.icon
+    }
+    
+    var title: TitleConfiguration {
+        configuration.title
+    }
+    
+    var subtitle: SubtitleConfiguration? {
+        configuration.subtitle
+    }
+    
+    var button: ButtonConfiguration? {
+        configuration.button
+    }
+    
+    var dismiss: DismissConfiguration {
+        configuration.dismiss
+    }
+    
+    var general: GeneralConfiguration {
+        configuration.general
+    }
     
     init(isPresented: Binding<Bool>,
         configuration: AirHUDConfiguration) {

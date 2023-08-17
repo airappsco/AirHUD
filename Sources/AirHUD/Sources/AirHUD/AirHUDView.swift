@@ -22,7 +22,7 @@ struct AirHudView<ViewModel: AirHUDViewModelObservable>: View {
                 viewForMode
                 .padding(.vertical, Layout.viewVerticalPadding)
                 .padding(.horizontal, Layout.viewHorizontalPadding)
-                .background(viewModel.configuration.general.backgroundColor)
+                .background(viewModel.general.backgroundColor)
                 .cornerRadius(Layout.viewCornerRadius)
                 .shadow(
                     color: .black.opacity(Layout.shadowOpacity),
@@ -30,7 +30,7 @@ struct AirHudView<ViewModel: AirHUDViewModelObservable>: View {
                     x: Layout.shadowX,
                     y: Layout.shadowY
                 )
-                .offset(y: viewModel.configuration.general.topOffset)
+                .offset(y: viewModel.general.topOffset)
                 .frame(maxWidth: Layout.hudMaximumWidth)
                 Spacer()
             }
@@ -45,7 +45,7 @@ struct AirHudView<ViewModel: AirHUDViewModelObservable>: View {
     }
     
     @ViewBuilder var viewForMode: some View {
-        switch viewModel.configuration.mode {
+        switch viewModel.mode {
         case .iconAndTitle:
             iconAndTitleView
         case .iconTitleAndButton:
@@ -56,85 +56,85 @@ struct AirHudView<ViewModel: AirHUDViewModelObservable>: View {
     }
     
     var iconAndTitleView: some View {
-        HStack(alignment: viewModel.configuration.general.verticalAlignment,
+        HStack(alignment: viewModel.general.verticalAlignment,
                spacing: Layout.horizontalItemSpacing) {
-            if viewModel.configuration.icon.position == .leading {
+            if viewModel.icon.position == .leading {
                 iconView
             }
-            VStack(alignment: viewModel.configuration.general.horizontalAlignment) {
+            VStack(alignment: viewModel.general.horizontalAlignment) {
                 titleView
             }
-            if viewModel.configuration.icon.position == .trailing {
+            if viewModel.icon.position == .trailing {
                 iconView
             }
         }
     }
     
     var iconTitleAndButtonView: some View {
-        HStack(alignment: viewModel.configuration.general.verticalAlignment,
+        HStack(alignment: viewModel.general.verticalAlignment,
                spacing: Layout.horizontalItemSpacing) {
-            if viewModel.configuration.icon.position == .leading {
+            if viewModel.icon.position == .leading {
                 iconView
             }
-            VStack(alignment: viewModel.configuration.general.horizontalAlignment,
+            VStack(alignment: viewModel.general.horizontalAlignment,
                    spacing: Layout.verticalItemSpacing) {
                 titleView
                 button
             }
-            if viewModel.configuration.icon.position == .trailing {
+            if viewModel.icon.position == .trailing {
                 iconView
             }
         }
     }
     
     var iconTitleAndSubtitleView: some View {
-        HStack(alignment: viewModel.configuration.general.verticalAlignment,
+        HStack(alignment: viewModel.general.verticalAlignment,
                spacing: Layout.horizontalItemSpacing) {
-            if viewModel.configuration.icon.position == .leading {
+            if viewModel.icon.position == .leading {
                 iconView
             }
-            VStack(alignment: viewModel.configuration.general.horizontalAlignment,
+            VStack(alignment: viewModel.general.horizontalAlignment,
                    spacing: Layout.verticalItemSpacing) {
                 titleView
                 subtitleView
             }
-            if viewModel.configuration.icon.position == .trailing {
+            if viewModel.icon.position == .trailing {
                 iconView
             }
         }
     }
     
     var iconView: some View {
-        viewModel.configuration.icon.image
+        viewModel.icon.image
             .resizable()
             .scaledToFit()
-            .frame(width: viewModel.configuration.icon.size.width, height: viewModel.configuration.icon.size.height)
-            .foregroundColor(viewModel.configuration.icon.color)
+            .frame(width: viewModel.icon.size.width, height: viewModel.icon.size.height)
+            .foregroundColor(viewModel.icon.color)
     }
     
     var titleView: some View {
-        Text(viewModel.configuration.title.text)
+        Text(viewModel.title.text)
             .lineLimit(lineLimitOfTitle())
-            .font(viewModel.configuration.title.font)
-            .foregroundColor(viewModel.configuration.title.color)
+            .font(viewModel.title.font)
+            .foregroundColor(viewModel.title.color)
     }
     
     var subtitleView: some View {
-        Text(viewModel.configuration.subtitle?.text ?? "")
+        Text(viewModel.subtitle?.text ?? "")
             .lineLimit(Layout.subtitleLineLimit)
-            .font(viewModel.configuration.subtitle?.font ?? .subheadline)
-            .foregroundColor(viewModel.configuration.subtitle?.color ?? .gray)
+            .font(viewModel.subtitle?.font ?? .subheadline)
+            .foregroundColor(viewModel.subtitle?.color ?? .gray)
     }
     
     var button: some View {
-        Button(viewModel.configuration.button?.text ?? "") {
-            if viewModel.configuration.button?.dismissOnTap == true {
+        Button(viewModel.button?.text ?? "") {
+            if viewModel.button?.dismissOnTap == true {
                 viewModel.hide()
             }
-            viewModel.configuration.button?.didTap?()
+            viewModel.button?.didTap?()
         }
-        .foregroundColor(viewModel.configuration.button?.color ?? .blue)
-        .font(viewModel.configuration.button?.font ?? .body)
+        .foregroundColor(viewModel.button?.color ?? .blue)
+        .font(viewModel.button?.font ?? .body)
     }
     
     enum Layout {
@@ -159,7 +159,7 @@ struct AirHudView<ViewModel: AirHUDViewModelObservable>: View {
 // MARK: Private Helpers
 private extension AirHudView {
     func lineLimitOfTitle() -> Int {
-        switch viewModel.configuration.mode {
+        switch viewModel.mode {
         case .iconAndTitle:
             return Layout.subtitleLineLimit
         default:
