@@ -10,17 +10,17 @@
 		E1F8E46E2A8B67B3007892F2 /* ExampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F8E46D2A8B67B3007892F2 /* ExampleApp.swift */; };
 		E1F8E4722A8B67B4007892F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1F8E4712A8B67B4007892F2 /* Assets.xcassets */; };
 		E1F8E4762A8B67B4007892F2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1F8E4752A8B67B4007892F2 /* Preview Assets.xcassets */; };
-		E1F8E49C2A8B69AF007892F2 /* AirHUD in Frameworks */ = {isa = PBXBuildFile; productRef = E1F8E49B2A8B69AF007892F2 /* AirHUD */; };
 		E1F8E49E2A8B9B21007892F2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F8E49D2A8B9B21007892F2 /* ContentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E103D3802A8E75170009145E /* AirHUD */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = AirHUD; path = ..; sourceTree = "<group>"; };
+		E1DC37902A8E722000C9B054 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		E1F8E46A2A8B67B3007892F2 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1F8E46D2A8B67B3007892F2 /* ExampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleApp.swift; sourceTree = "<group>"; };
 		E1F8E4712A8B67B4007892F2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E1F8E4732A8B67B4007892F2 /* Example.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Example.entitlements; sourceTree = "<group>"; };
 		E1F8E4752A8B67B4007892F2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		E1F8E4992A8B697D007892F2 /* AirHUD */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = AirHUD; path = ../Sources/AirHUD; sourceTree = "<group>"; };
 		E1F8E49D2A8B9B21007892F2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -29,17 +29,24 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E1F8E49C2A8B69AF007892F2 /* AirHUD in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E103D37F2A8E75170009145E /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				E103D3802A8E75170009145E /* AirHUD */,
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
 		E1F8E4612A8B67B3007892F2 = {
 			isa = PBXGroup;
 			children = (
-				E1F8E4982A8B697D007892F2 /* Packages */,
+				E103D37F2A8E75170009145E /* Packages */,
 				E1F8E46C2A8B67B3007892F2 /* Example */,
 				E1F8E46B2A8B67B3007892F2 /* Products */,
 				E1F8E49A2A8B69AF007892F2 /* Frameworks */,
@@ -57,6 +64,7 @@
 		E1F8E46C2A8B67B3007892F2 /* Example */ = {
 			isa = PBXGroup;
 			children = (
+				E1DC37902A8E722000C9B054 /* Info.plist */,
 				E1F8E46D2A8B67B3007892F2 /* ExampleApp.swift */,
 				E1F8E49D2A8B9B21007892F2 /* ContentView.swift */,
 				E1F8E4712A8B67B4007892F2 /* Assets.xcassets */,
@@ -72,14 +80,6 @@
 				E1F8E4752A8B67B4007892F2 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		E1F8E4982A8B697D007892F2 /* Packages */ = {
-			isa = PBXGroup;
-			children = (
-				E1F8E4992A8B697D007892F2 /* AirHUD */,
-			);
-			name = Packages;
 			sourceTree = "<group>";
 		};
 		E1F8E49A2A8B69AF007892F2 /* Frameworks */ = {
@@ -106,7 +106,6 @@
 			);
 			name = Example;
 			packageProductDependencies = (
-				E1F8E49B2A8B69AF007892F2 /* AirHUD */,
 			);
 			productName = Example;
 			productReference = E1F8E46A2A8B67B3007892F2 /* Example.app */;
@@ -293,6 +292,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Example/Info.plist;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -335,6 +335,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Example/Info.plist;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -385,13 +386,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		E1F8E49B2A8B69AF007892F2 /* AirHUD */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = AirHUD;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E1F8E4622A8B67B3007892F2 /* Project object */;
 }
