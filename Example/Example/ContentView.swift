@@ -47,17 +47,17 @@ struct ContentView: View {
             Spacer()
         }
         .airHud(isPresented: $showIconAndTitle,
-                icon: Image(systemName: "doc.on.doc"),
+                iconImage: Image(systemName: "doc.on.doc"),
                 iconColor: Color(uiColor: .systemBlue),
                 title: "Text Copied")
         .airHud(isPresented: $showTitleAndButton,
-                icon: Image(systemName: "trash"),
+                iconImage: Image(systemName: "trash"),
                 iconColor: Color(uiColor: .systemRed),
                 title: "Conversation Deleted",
                 buttonTitle: "Undo",
                 buttonAction: nil)
         .airHud(isPresented: $showTitleAndSubtitle,
-                icon: Image(systemName: "folder"),
+                iconImage: Image(systemName: "folder"),
                 iconColor: Color(uiColor: .systemBlue),
                 title: "Moved",
                 subtitle: "File moved to \"Personal\"")
