@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E103D3822A8E75790009145E /* AirHUD in Frameworks */ = {isa = PBXBuildFile; productRef = E103D3812A8E75790009145E /* AirHUD */; };
 		E1F8E46E2A8B67B3007892F2 /* ExampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F8E46D2A8B67B3007892F2 /* ExampleApp.swift */; };
 		E1F8E4722A8B67B4007892F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1F8E4712A8B67B4007892F2 /* Assets.xcassets */; };
 		E1F8E4762A8B67B4007892F2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1F8E4752A8B67B4007892F2 /* Preview Assets.xcassets */; };
@@ -29,6 +30,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E103D3822A8E75790009145E /* AirHUD in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,6 +108,7 @@
 			);
 			name = Example;
 			packageProductDependencies = (
+				E103D3812A8E75790009145E /* AirHUD */,
 			);
 			productName = Example;
 			productReference = E1F8E46A2A8B67B3007892F2 /* Example.app */;
@@ -386,6 +389,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E103D3812A8E75790009145E /* AirHUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = AirHUD;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E1F8E4622A8B67B3007892F2 /* Project object */;
 }
