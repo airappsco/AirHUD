@@ -4,7 +4,7 @@
 
 ![AirHUD-light](https://github.com/airappsco/AirHUD/assets/110384781/9a830426-3154-492a-bd46-468dfec7d045)
 
-HUD component that written with SwiftUI for **iOS 15** and later
+HUD component written using SwiftUI for **iOS 15** and later
 
 ## Features
 - 3 different layouts
