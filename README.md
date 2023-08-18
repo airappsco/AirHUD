@@ -1,3 +1,7 @@
+![Static Badge](https://img.shields.io/badge/license-MIT-lightgray)
+![Static Badge](https://img.shields.io/badge/platform-iOS-blue)
+![Static Badge](https://img.shields.io/badge/SPM-compatible-brightgreen)
+
 # AirHUD
 
 HUD component that written with SwiftUI for **iOS 15** and later
