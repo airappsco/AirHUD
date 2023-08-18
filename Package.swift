@@ -5,6 +5,7 @@ import PackageDescription
 
 let package = Package(
     name: "AirHUD",
+    defaultLocalization: "en",
     platforms: [
         .iOS(.v15)
     ],
@@ -23,9 +24,11 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "AirHUD",
-            dependencies: []),
+            dependencies: [],
+            path: "Sources/AirHUD"),
         .testTarget(
             name: "AirHUDTests",
-            dependencies: ["AirHUD"]),
+            dependencies: ["AirHUD"],
+            path: "Tests/AirHUDTests"),
     ]
 )
