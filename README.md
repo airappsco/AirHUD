@@ -35,9 +35,6 @@ import AirHUD
 Call related `airHUD` function after a SwiftUI View that takes up the whole screen with a bindable boolean and necessary information.
 
 ```swift
-import AirHUD
-import SwiftUI
-
 struct ContentView: View {
     
     @State var isPresented: Bool = false
@@ -60,7 +57,9 @@ struct ContentView: View {
 
 There are 4 different `airHUD` functions. 3 of them provides ease of use for 3 different layouts with default UI customization. Last one provides customization over HUD elements such as fonts, colors, alignments and more.
 
-#### Icon and Title
+### Icon and Title
+
+<p><img src="https://github.com/airappsco/AirHUD/assets/110384781/793f90d8-5618-48ad-83c2-8d4de024f007" width="400"></p>
 
 ```swift
         .airHud(isPresented: $isPresented,
@@ -69,7 +68,9 @@ There are 4 different `airHUD` functions. 3 of them provides ease of use for 3 d
                 title: "Text Copied")
 ```
 
-#### Icon, Title and Button
+### Icon, Title and Button
+
+<p><img src="https://github.com/airappsco/AirHUD/assets/110384781/f00ae526-fbb6-48f7-9212-e66eddeca417" width="400"></p>
 
 ```swift
         .airHud(isPresented: $isPresented,
@@ -80,7 +81,9 @@ There are 4 different `airHUD` functions. 3 of them provides ease of use for 3 d
                 buttonAction: nil)
 ```
 
-#### Icon, Title and Subtitle
+### Icon, Title and Subtitle
+
+<p><img src="https://github.com/airappsco/AirHUD/assets/110384781/6e829c89-f52a-4d80-b639-5acfa7f7364c" width="400"></p>
 
 ```swift
         .airHud(isPresented: $isPresented,
@@ -90,7 +93,9 @@ There are 4 different `airHUD` functions. 3 of them provides ease of use for 3 d
                 subtitle: "File moved to \"Personal\"")
 ```
 
-#### With Configuration
+### With Configuration
+
+<p><img src="https://github.com/airappsco/AirHUD/assets/110384781/82a1669f-c6b5-4480-8d4f-946b20ce01c1" width="400"></p>
 
 ```swift
     var hudConfiguration: AirHUDConfiguration {
@@ -104,7 +109,7 @@ There are 4 different `airHUD` functions. 3 of them provides ease of use for 3 d
         let subtitleConfiguration = SubtitleConfiguration(text: "You can change your favorites at any time from favorites section",
                                                           color: .blue,
                                                           font: .callout)
-        let dismissConfiguration = DismissConfiguration(autoDismiss: false)
+        let dismissConfiguration = DismissConfiguration(autoDismiss: true)
         let generalConfiguration = GeneralConfiguration(backgroundColor: .orange,
                                                         horizontalAlingment: .center,
                                                         verticalAlignment: .bottom)
