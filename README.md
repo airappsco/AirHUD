@@ -126,7 +126,7 @@ There are 4 different `airHUD` functions. 3 of them provides ease of use for 3 d
                 configuration: hudConfiguration)
 ```
 
-You can also check the **Example project** for usage.
+You can also check the **[Example project](https://github.com/airappsco/AirHUD/tree/master/Example)** for usage.
 
 ## License
 
