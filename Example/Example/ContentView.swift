@@ -9,7 +9,7 @@ import AirHUD
 import SwiftUI
 
 struct ContentView: View {
-    
+
     @State var showIconAndTitle: Bool = false
     @State var showTitleAndButton: Bool = false
     @State var showTitleAndSubtitle: Bool = false
@@ -64,7 +64,7 @@ struct ContentView: View {
         .airHud(isPresented: $showCustomized,
                 configuration: customizedConfiguration)
     }
-    
+
     var customizedConfiguration: AirHUDConfiguration {
         let iconConfiguration = IconConfiguration(image: .init(systemName: "star"),
                                                   color: .white,
