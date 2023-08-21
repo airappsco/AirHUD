@@ -132,7 +132,7 @@ You can also check the **[Example project](Example)** for usage.
 
 MIT License
 
-Copyright (c) 2023 Air Apps
+Copyright (c) 2023  Air Apps (Air Apps, Inc. and Affiliates)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
