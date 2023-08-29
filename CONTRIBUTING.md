@@ -47,6 +47,18 @@ This project and everyone participating in it is governed by the Air Apps [Code 
 - Write tests for your code.
 - Document any new functions or changes to existing functions in the comments.
 
+### File Headers
+Source files must contain a file header of the following format:
+```
+//
+//  SourceFilename.swift
+//  AppName
+//
+//  Created by {author name} on 29/08/2023.
+//  Copyright © 2023 Air Apps. All rights reserved.
+//
+```
+
 ## License
 
 By contributing, you agree that your contributions will be licensed under its MIT License.
