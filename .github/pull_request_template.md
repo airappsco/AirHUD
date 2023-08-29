@@ -4,7 +4,7 @@ Please provide links to any associated tickets or issues
 - https://airappsco.atlassian.net/browse/IOSPRO-YY
 
 ## Checklist
-- [ ] My code follows the style guidelines of this project (please refer to [CONTRIBUTING.md](../CONTRIBUTING.md)).
+- [ ] My code follows the style guidelines of this project (please refer to CONTRIBUTING.md).
 - [ ] I have performed a self-review of my own code.
 - [ ] I have commented my code, particularly in hard-to-understand areas.
 - [ ] I have made corresponding changes to the documentation.
