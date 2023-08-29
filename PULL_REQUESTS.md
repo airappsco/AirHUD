@@ -10,7 +10,7 @@ This document describes the key activities and guidelines related to Pull Reques
 Naturally, this is a collaborative and incremental process. This means that mostly anything is open to change and we’ll improve the process as we implement it. We encourage you to drop your feedback at any time to make this happen.
 
 ## Key Activities
-Make sure to follow branch naming guidelines. Please refer to [this](./BRANCHING.md) document for further guidance.
+Make sure to follow branch naming guidelines. Please refer to [this](./BRANCHING.md) document for further guidance
 
 Follow the commit message guidelines. You can find the standards in [this](./COMMITS.md) document.
 
