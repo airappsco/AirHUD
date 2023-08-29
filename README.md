@@ -1,5 +1,5 @@
 ![Static Badge](https://img.shields.io/badge/license-MIT-lightgray)
-![Static Badge](https://img.shields.io/badge/platform-iOS-blue)
+![Static Badge](https://img.shields.io/badge/iOS-15.0+-blue.svg)
 ![Static Badge](https://img.shields.io/badge/SPM-compatible-brightgreen)
 
 ![AirHUD-light](https://github.com/airappsco/AirHUD/assets/110384781/9a830426-3154-492a-bd46-468dfec7d045)
