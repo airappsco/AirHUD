@@ -1,0 +1,102 @@
+---
+format_version: '11'
+default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
+trigger_map:
+- pull_request_source_branch: "*"
+  pull_request_target_branch: "*"
+  workflow: CI_Build_And_Test
+- pull_request_source_branch: "*"
+  pull_request_target_branch: develop
+  workflow: CI_Build_And_Test
+- pull_request_source_branch: "*"
+  pull_request_target_branch: feature/*
+  workflow: CI_Build_And_Test
+- pull_request_source_branch: "*"
+  pull_request_target_branch: hotfix/*
+  workflow: CI_Build_And_Test
+- pull_request_source_branch: "*"
+  pull_request_target_branch: release/*
+  workflow: CI_Build_And_Test
+- pull_request_source_branch: "*"
+  pull_request_target_branch: master
+  workflow: CI_Build_And_Test
+project_type: ios
+workflows:
+  Merge_Develop_Into_Master_For_Release:
+    steps:
+    - set-git-credentials@1:
+        inputs:
+        - git_user_name: Air Buildbot
+        - git_email_address: buildbot@airapps.com
+    - activate-ssh-key@4:
+        run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
+    - git-clone@6: {}
+    - script@1:
+        title: Merge into master
+        inputs:
+        - content: |-
+            #!/usr/bin/env bash
+            # fail if any commands fails
+            set -ex
+
+            # Merge into master
+            ./$SCRIPTS_DIRECTORY/merge-for-release-train.sh
+    - slack@3:
+        run_if: enveq "SKIP_OTHER_STEPS" ""
+        inputs:
+        - api_token: ''
+        - channel: "$SLACK_BUILDS_CHANNEL"
+        - text: ''
+        - emoji: ''
+        - from_username: BitriseBot
+        - color: good
+        - title_link: ''
+        - image_url: ''
+        - thumb_url: ''
+        - buttons: 'View Build|${BITRISE_BUILD_URL}
+
+            '
+        - icon_url: ''
+        - pretext: "*Build Succeeded*"
+        - channel_on_error: "$SLACK_BUILDS_CHANNEL"
+        - color_on_error: danger
+        - pretext_on_error: "*Build Failed*"
+        - title_on_error: "$GIT_CLONE_COMMIT_MESSAGE_SUBJECT"
+        - icon_url_on_error: ''
+        - webhook_url: "$SLACK_BUILDS_CHANNEL_WEBHOOK_URL"
+        - message: |-
+            ‣ Framework: $BITRISE_SCHEME
+            ‣ Merged develop branch (integration) into master branch (release)
+            ‣ All changes will be released on the next release train
+        - message_on_error: "Failed to merge develop branch (integration) into master
+            branch (release) \U0001F62D"
+  CI_Build_And_Test:
+    steps:
+    - set-git-credentials@1:
+        inputs:
+        - git_email_address: bitrise.build@bot.com
+    - activate-ssh-key@4:
+        run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
+    - git-clone@8.1: {}
+    - restore-spm-cache@1: {}
+    - xcode-test@4.7:
+        inputs:
+        - destination: platform=iOS Simulator,name=iPhone SE (3rd generation),OS=16.4
+    - save-spm-cache@1: {}
+    - deploy-to-bitrise-io@2: {}
+meta:
+  bitrise.io:
+    stack: osx-xcode-14.3.x-ventura
+    machine_type_id: g2-m1.4core
+app:
+  envs:
+  - opts:
+      is_expand: false
+    BITRISE_PROJECT_PATH: "./Package.swift"
+  - opts:
+      is_expand: false
+    BITRISE_SCHEME: AirHUD
+  - opts:
+      is_expand: false
+    SCRIPTS_DIRECTORY: scripts
+
