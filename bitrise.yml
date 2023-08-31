@@ -22,12 +22,26 @@ trigger_map:
   workflow: CI_Build_And_Test
 project_type: ios
 workflows:
+  CI_Build_And_Test:
+    steps:
+    - set-git-credentials@1:
+        inputs:
+        - git_email_address: bitrise.build@bot.com
+    - activate-ssh-key@4:
+        run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
+    - git-clone@8.1: {}
+    - restore-spm-cache@1: {}
+    - xcode-test@4.7:
+        inputs:
+        - destination: platform=iOS Simulator,name=iPhone SE (3rd generation),OS=16.4
+    - save-spm-cache@1: {}
+    - deploy-to-bitrise-io@2: {}
   Merge_Develop_Into_Master_For_Release:
     steps:
     - set-git-credentials@1:
         inputs:
-        - git_user_name: Air Buildbot
-        - git_email_address: buildbot@airapps.com
+        - git_user_name: "$GIT_BOT_NAME"
+        - git_email_address: "$GIT_BOT_EMAIL"
     - activate-ssh-key@4:
         run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
     - git-clone@6: {}
@@ -65,25 +79,81 @@ workflows:
         - icon_url_on_error: ''
         - webhook_url: "$SLACK_BUILDS_CHANNEL_WEBHOOK_URL"
         - message: |-
-            ‣ Framework: $BITRISE_SCHEME
+            ‣ Framework: $BASE_FRAMEWORK_NAME
             ‣ Merged develop branch (integration) into master branch (release)
             ‣ All changes will be released on the next release train
         - message_on_error: "Failed to merge develop branch (integration) into master
             branch (release) \U0001F62D"
-  CI_Build_And_Test:
+  Release:
     steps:
     - set-git-credentials@1:
         inputs:
-        - git_email_address: bitrise.build@bot.com
+        - git_email_address: "$GIT_BOT_EMAIL"
+        - git_user_name: "$GIT_BOT_NAME"
     - activate-ssh-key@4:
         run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
-    - git-clone@8.1: {}
-    - restore-spm-cache@1: {}
-    - xcode-test@4.7:
+    - git-clone@6.2: {}
+    - cache-pull@2:
+        run_if: enveq "SKIP_OTHER_STEPS" ""
         inputs:
-        - destination: platform=iOS Simulator,name=iPhone SE (3rd generation),OS=16.4
-    - save-spm-cache@1: {}
-    - deploy-to-bitrise-io@2: {}
+        - is_debug_mode: 'true'
+    - script@1.2:
+        run_if: enveq "SKIP_OTHER_STEPS" ""
+        inputs:
+        - content: |-
+            #!/usr/bin/env bash
+            # fail if any commands fails
+            set -e
+
+            ./$SCRIPTS_DIRECTORY/collect-release-notes.sh
+        title: Collect Release Notes
+    - github-release@0:
+        run_if: enveq "SKIP_OTHER_STEPS" ""
+        title: Create Github release for the public framework
+        inputs:
+        - is_debug: 'yes'
+        - username: "$GITHUB_BOT_USERNAME"
+        - name: "$TAG"
+        - body: "$BITRISE_RELEASE_NOTES"
+        - tag: "$TAG"
+        - commit: master
+        - draft: 'no'
+        - repository_url: "$TARGET_RELEASE_REPO"
+        - api_token: "$GITHUB_CREATE_RELEASE_ACCESS_TOKEN"
+    - cache-push@2:
+        run_if: enveq "SKIP_OTHER_STEPS" ""
+    - slack@3:
+        run_if: enveq "SKIP_OTHER_STEPS" ""
+        inputs:
+        - api_token: ''
+        - channel: "$SLACK_OPENSOURCE_RELEASE_CHANNEL"
+        - text: ''
+        - emoji: ''
+        - from_username: BitriseBot
+        - color: good
+        - title_link: ''
+        - image_url: ''
+        - thumb_url: ''
+        - buttons: 'View Release|${GIT_REPO_URL}/releases/tag/${TAG}
+
+            '
+        - icon_url: ''
+        - pretext: "*New Release*"
+        - channel_on_error: "$SLACK_OPENSOURCE_RELEASE_CHANNEL"
+        - color_on_error: danger
+        - pretext_on_error: "*Release Failed*"
+        - title_on_error: "$GIT_CLONE_COMMIT_MESSAGE_SUBJECT"
+        - icon_url_on_error: ''
+        - webhook_url: "$SLACK_BUILDS_CHANNEL_WEBHOOK_URL"
+        - message: "‣ Framework: $BASE_FRAMEWORK_NAME v$TAG released"
+        - message_on_error: "Failed to release \U0001F62D"
+    envs:
+    - opts:
+        is_expand: false
+      GIT_REPO_URL: https://github.com/airappsco/AirHUD
+    - opts:
+        is_expand: false
+      TARGET_RELEASE_REPO: git@github.com:airappsco/AirHUD.git
 meta:
   bitrise.io:
     stack: osx-xcode-14.3.x-ventura
@@ -95,8 +165,13 @@ app:
     BITRISE_PROJECT_PATH: "./Package.swift"
   - opts:
       is_expand: false
-    BITRISE_SCHEME: AirHUD
+    SCRIPTS_DIRECTORY: scripts
   - opts:
       is_expand: false
-    SCRIPTS_DIRECTORY: scripts
-
+    SLACK_BUILDS_CHANNEL: air-frameworks-builds
+  - opts:
+      is_expand: false
+    BASE_FRAMEWORK_NAME: AirHUD
+  - opts:
+      is_expand: false
+    BITRISE_SCHEME: AirHUD
