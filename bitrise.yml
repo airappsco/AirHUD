@@ -172,3 +172,6 @@ app:
   - opts:
       is_expand: false
     BASE_FRAMEWORK_NAME: AirHUD
+  - opts:
+      is_expand: false
+    BITRISE_SCHEME: AirHUD
