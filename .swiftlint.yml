@@ -2,6 +2,7 @@ excluded:
 - Carthage
 - Pods
 - SwiftLint/Common/3rdPartyLib
+- Package.swift
 
 analyzer_rules:
   - explicit_self
