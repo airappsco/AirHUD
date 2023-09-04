@@ -11,10 +11,10 @@ import SwiftUI
 
 struct ContentView: View {
 
-    @State var showIconAndTitle: Bool = false
-    @State var showTitleAndButton: Bool = false
-    @State var showTitleAndSubtitle: Bool = false
-    @State var showCustomized: Bool = false
+    @State var showIconAndTitle = false
+    @State var showTitleAndButton = false
+    @State var showTitleAndSubtitle = false
+    @State var showCustomized = false
 
     var body: some View {
         VStack {

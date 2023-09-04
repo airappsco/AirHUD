@@ -15,8 +15,10 @@ public extension View {
     ///   - isPresented: Binding value that shows view is visible or not
     ///   - configuration: Model that contains all customization of AirHUD
     /// - Returns: View instance that contains AirHUD as top item according to Z-axis
-    func airHud(isPresented: Binding<Bool>,
-                configuration: AirHUDConfiguration) -> some View {
+    func airHud(
+        isPresented: Binding<Bool>,
+        configuration: AirHUDConfiguration
+    ) -> some View {
         modifier(AirHUDViewModifier(isPresented: isPresented, configuration: configuration))
     }
     
@@ -27,10 +29,12 @@ public extension View {
     ///   - iconColor: Foreground color for the given image.
     ///   - title: String which will show as title on AirHUD.
     /// - Returns: View instance that contains AirHUD as top item according to Z-axis
-    func airHud(isPresented: Binding<Bool>,
-                iconImage: Image,
-                iconColor: Color,
-                title: String) -> some View {
+    func airHud(
+        isPresented: Binding<Bool>,
+        iconImage: Image,
+        iconColor: Color,
+        title: String
+    ) -> some View {
         let mode: AirHUDMode = .iconAndTitle(icon: .init(image: iconImage, color: iconColor),
                                              title: .init(text: title))
         let configuration: AirHUDConfiguration = .init(mode: mode)
@@ -46,12 +50,14 @@ public extension View {
     ///   - buttonTitle: String which will show as button's title on AirHUD.
     ///   - buttonAction: Tap action of the button.
     /// - Returns: View instance that contains AirHUD as top item according to Z-axis.
-    func airHud(isPresented: Binding<Bool>,
-                iconImage: Image,
-                iconColor: Color,
-                title: String,
-                buttonTitle: String,
-                buttonAction: (() -> Void)? = nil) -> some View {
+    func airHud(
+        isPresented: Binding<Bool>,
+        iconImage: Image,
+        iconColor: Color,
+        title: String,
+        buttonTitle: String,
+        buttonAction: (() -> Void)? = nil
+    ) -> some View {
         let mode: AirHUDMode = .iconTitleAndButton(icon: .init(image: iconImage, color: iconColor),
                                                    title: .init(text: title),
                                                    button: .init(text: buttonTitle, didTap: buttonAction),
@@ -68,11 +74,13 @@ public extension View {
     ///   - title: String which will show as title on AirHUD.
     ///   - subtitle: String which will show as subtitle on AirHUD
     /// - Returns: View instance that contains AirHUD as top item according to Z-axis.
-    func airHud(isPresented: Binding<Bool>,
-                iconImage: Image,
-                iconColor: Color,
-                title: String,
-                subtitle: String) -> some View {
+    func airHud(
+        isPresented: Binding<Bool>,
+        iconImage: Image,
+        iconColor: Color,
+        title: String,
+        subtitle: String
+    ) -> some View {
         let mode: AirHUDMode = .iconTitleAndSubtitle(icon: .init(image: iconImage, color: iconColor),
                                                      title: .init(text: title),
                                                      subtitle: .init(text: subtitle),
