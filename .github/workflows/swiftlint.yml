@@ -16,5 +16,3 @@ jobs:
         uses: norio-nomura/action-swiftlint@3.2.1
         with:
           args: --strict
-        env:
-          WORKING_DIRECTORY: Sources
