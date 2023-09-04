@@ -2,7 +2,7 @@
 ![Static Badge](https://img.shields.io/badge/iOS-15.0+-blue.svg)
 ![Static Badge](https://img.shields.io/badge/SPM-compatible-brightgreen)
 
-![AirHUD-light](https://github.com/airappsco/AirHUD/assets/110384781/9a830426-3154-492a-bd46-468dfec7d045)
+![AirHUD_Project Banner_Github 2](https://github.com/airappsco/AirHUD/assets/101549919/07159edb-163a-4207-9977-010359cfef89)
 
 HUD component written using SwiftUI for **iOS 15** and later
 
