@@ -217,11 +217,13 @@ public struct ButtonConfiguration {
     ///   - font: Font of the button. Initial value is iOS subheadline system font with semibold weight.
     ///   - didTap: Tap action of the button. Initial value is nil.
     ///   - dismissOnTap: Flag that refers dismiss of AIRHUD when button is tapped. Initial value is true.
-    public init(text: String,
-                color: Color = Color(.systemBlue),
-                font: Font = .subheadline.weight(.semibold),
-                didTap: ( () -> Void)? = nil,
-                dismissOnTap: Bool = true) {
+    public init(
+        text: String,
+        color: Color = Color(.systemBlue),
+        font: Font = .subheadline.weight(.semibold),
+        didTap: ( () -> Void)? = nil,
+        dismissOnTap: Bool = true
+    ) {
         self.text = text
         self.color = color
         self.font = font
