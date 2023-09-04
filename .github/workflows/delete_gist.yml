@@ -1,0 +1,16 @@
+name: Delete Gist
+
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  delete-gist:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        
+      - name: Delete gist
+        run: |
+          curl -X DELETE -H "Authorization: token ${{ secrets.SWIFTLINT_GITHUB_TOKEN }}" "https://api.github.com/gists/194420f98553adb9a531aefa259eb0df"
