@@ -35,12 +35,6 @@ let package = Package(
             dependencies: ["AirHUD"],
             path: "Tests/AirHUDTests",
             plugins: [.plugin(name: "SwiftLintPlugin", package: "SwiftLint")]
-        ),
-        .testTarget(
-            name: "SwiftLintTests",
-            dependencies: ["AirHUD"],
-            path: "Tests/SwiftLint",
-            plugins: [.plugin(name: "SwiftLintPlugin", package: "SwiftLint")]
-        ),
+        )
     ]
 )
