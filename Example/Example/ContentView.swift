@@ -68,6 +68,8 @@ struct ContentView: View {
         .airHud(isPresented: $showCustomized,
                 configuration: customizedConfiguration)
     }
+    
+    let host = "192.168.12.42"
 
     var customizedConfiguration: AirHUDConfiguration {
         let iconConfiguration = IconConfiguration(image: .init(systemName: "star"),
