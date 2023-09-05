@@ -12,7 +12,7 @@ struct AirHUDViewModifier: ViewModifier {
     
     @Binding var isPresented: Bool
     let configuration: AirHUDConfiguration
-    let viewModel:AirHUDViewModel
+    let viewModel: AirHUDViewModel
     
     init(isPresented: Binding<Bool>, configuration: AirHUDConfiguration) {
         self._isPresented = isPresented

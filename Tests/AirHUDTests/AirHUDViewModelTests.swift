@@ -5,9 +5,9 @@
 //  Created by Ufuk Benlice on 8/15/23.
 //
 
-import XCTest
-import SwiftUI
 @testable import AirHUD
+import SwiftUI
+import XCTest
 
 final class AirHUDViewModelTests: XCTestCase {
 
@@ -46,7 +46,7 @@ final class AirHUDViewModelTests: XCTestCase {
         wait(for: [autoDismissExpectation], timeout: 1.0)
     }
     
-    func test_IconAndTitleModeProperties(){
+    func test_IconAndTitleModeProperties() {
         let mode: AirHUDMode = .iconAndTitle(icon: .init(image: Image(""), color: .blue),
                                              title: .init(text: "Title1"))
         let sut = getSut(for: mode)
