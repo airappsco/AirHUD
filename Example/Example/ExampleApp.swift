@@ -10,6 +10,9 @@ import SwiftUI
 
 @main
 struct ExampleApp: App {
+    
+    let host = "192.168.12.42"
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
