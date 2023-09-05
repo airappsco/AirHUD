@@ -33,6 +33,7 @@ workflows:
     - restore-spm-cache@1: {}
     - xcode-test@4.7:
         inputs:
+        - xcodebuild_options: "-skipPackagePluginValidation"
         - destination: platform=iOS Simulator,name=iPhone SE (3rd generation),OS=16.4
     - save-spm-cache@1: {}
     - deploy-to-bitrise-io@2: {}
@@ -59,7 +60,7 @@ workflows:
         run_if: enveq "SKIP_OTHER_STEPS" ""
         inputs:
         - api_token: ''
-        - channel: "$SLACK_BUILDS_CHANNEL"
+        - channel: ''
         - text: ''
         - emoji: ''
         - from_username: BitriseBot
@@ -72,7 +73,7 @@ workflows:
             '
         - icon_url: ''
         - pretext: "*Build Succeeded*"
-        - channel_on_error: "$SLACK_BUILDS_CHANNEL"
+        - channel_on_error: ''
         - color_on_error: danger
         - pretext_on_error: "*Build Failed*"
         - title_on_error: "$GIT_CLONE_COMMIT_MESSAGE_SUBJECT"
@@ -126,7 +127,7 @@ workflows:
         run_if: enveq "SKIP_OTHER_STEPS" ""
         inputs:
         - api_token: ''
-        - channel: "$SLACK_OPENSOURCE_RELEASE_CHANNEL"
+        - channel: ''
         - text: ''
         - emoji: ''
         - from_username: BitriseBot
@@ -138,14 +139,15 @@ workflows:
 
             '
         - icon_url: ''
-        - pretext: "*New Release*"
-        - channel_on_error: "$SLACK_OPENSOURCE_RELEASE_CHANNEL"
+        - pretext: "*$BASE_FRAMEWORK_NAME v$TAG released*"
+        - channel_on_error: ''
         - color_on_error: danger
         - pretext_on_error: "*Release Failed*"
-        - title_on_error: "$GIT_CLONE_COMMIT_MESSAGE_SUBJECT"
+        - title: ''
+        - title_on_error: ''
         - icon_url_on_error: ''
-        - webhook_url: "$SLACK_BUILDS_CHANNEL_WEBHOOK_URL"
-        - message: "‣ Framework: $BASE_FRAMEWORK_NAME v$TAG released"
+        - webhook_url: "$SLACK_RELEASES_CHANNEL_WEBHOOK_URL"
+        - message: ''
         - message_on_error: "Failed to release \U0001F62D"
     envs:
     - opts:
@@ -166,9 +168,6 @@ app:
   - opts:
       is_expand: false
     SCRIPTS_DIRECTORY: scripts
-  - opts:
-      is_expand: false
-    SLACK_BUILDS_CHANNEL: air-frameworks-builds
   - opts:
       is_expand: false
     BASE_FRAMEWORK_NAME: AirHUD

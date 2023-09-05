@@ -17,10 +17,12 @@ public enum AirHUDMode {
     ///   - title: Model that represents hud title configuration.
     ///   - dismiss: Model that represents hud dismissal configuration.
     ///   - general: Model that represents hud general configuration.
-    case iconAndTitle(icon: IconConfiguration,
-                      title: TitleConfiguration,
-                      dismiss: DismissConfiguration = .init(),
-                      general: GeneralConfiguration = .init())
+    case iconAndTitle(
+        icon: IconConfiguration,
+        title: TitleConfiguration,
+        dismiss: DismissConfiguration = .init(),
+        general: GeneralConfiguration = .init()
+    )
     
     /// Icon, title and button mode.
     /// - Parameters:
@@ -29,11 +31,13 @@ public enum AirHUDMode {
     ///   - button: Model that represents hud button configuration.
     ///   - dismiss: Model that represents hud dismissal configuration.
     ///   - general: Model that represents hud general configuration.
-    case iconTitleAndButton(icon: IconConfiguration,
-                            title: TitleConfiguration,
-                            button: ButtonConfiguration,
-                            dismiss: DismissConfiguration = .init(),
-                            general: GeneralConfiguration = .init())
+    case iconTitleAndButton(
+        icon: IconConfiguration,
+        title: TitleConfiguration,
+        button: ButtonConfiguration,
+        dismiss: DismissConfiguration = .init(),
+        general: GeneralConfiguration = .init()
+    )
     
     /// Icon, title and subtitle mode.
     /// - Parameters:
@@ -42,11 +46,13 @@ public enum AirHUDMode {
     ///   - subtitle: Model that represents hud subtitle configuration.
     ///   - dismiss: Model that represents hud dismissal configuration.
     ///   - general: Model that represents hud general configuration.
-    case iconTitleAndSubtitle(icon: IconConfiguration,
-                              title: TitleConfiguration,
-                              subtitle: SubtitleConfiguration,
-                              dismiss: DismissConfiguration = .init(),
-                              general: GeneralConfiguration = .init())
+    case iconTitleAndSubtitle(
+        icon: IconConfiguration,
+        title: TitleConfiguration,
+        subtitle: SubtitleConfiguration,
+        dismiss: DismissConfiguration = .init(),
+        general: GeneralConfiguration = .init()
+    )
 }
 
 /// Configuration model of AirHUD.
@@ -123,10 +129,12 @@ public struct IconConfiguration {
     ///   - color: Foreground color for the given image.
     ///   - position: Position of given image in AirHUD. Initial value is leading.
     ///   - size: Size of the given image. Initial value is (32,32).
-    public init(image: Image,
-                color: Color,
-                position: Position = .leading,
-                size: CGSize = .init(width: 32, height: 32)) {
+    public init(
+        image: Image,
+        color: Color,
+        position: Position = .leading,
+        size: CGSize = .init(width: 32, height: 32)
+    ) {
         self.image = image
         self.color = color
         self.position = position
@@ -157,9 +165,11 @@ public struct TitleConfiguration {
     ///   - text: String which will show as title on AirHUD.
     ///   - color: Color of the title. Initial value is iOS label system color.
     ///   - font: Font of the title. Initial value is iOS headline system font with semibold weight.
-    public init(text: String,
-                color: Color = Color(.label),
-                font: Font = .headline.weight(.semibold)) {
+    public init(
+        text: String,
+        color: Color = Color(.label),
+        font: Font = .headline.weight(.semibold)
+    ) {
         self.text = text
         self.color = color
         self.font = font
@@ -183,9 +193,11 @@ public struct SubtitleConfiguration {
     ///   - text: String which will show as subtitle on AirHUD.
     ///   - color: Color of the subtitle. Initial value is iOS secondaryLabel system color.
     ///   - font: Font of the subtitle. Initial value is iOS subheadline system font with medium weight.
-    public init(text: String,
-                color: Color = Color(.secondaryLabel),
-                font: Font = .subheadline.weight(.medium)) {
+    public init(
+        text: String,
+        color: Color = Color(.secondaryLabel),
+        font: Font = .subheadline.weight(.medium)
+    ) {
         self.text = text
         self.color = color
         self.font = font
@@ -217,11 +229,13 @@ public struct ButtonConfiguration {
     ///   - font: Font of the button. Initial value is iOS subheadline system font with semibold weight.
     ///   - didTap: Tap action of the button. Initial value is nil.
     ///   - dismissOnTap: Flag that refers dismiss of AIRHUD when button is tapped. Initial value is true.
-    public init(text: String,
-                color: Color = Color(.systemBlue),
-                font: Font = .subheadline.weight(.semibold),
-                didTap: ( () -> Void)? = nil,
-                dismissOnTap: Bool = true) {
+    public init(
+        text: String,
+        color: Color = Color(.systemBlue),
+        font: Font = .subheadline.weight(.semibold),
+        didTap: ( () -> Void)? = nil,
+        dismissOnTap: Bool = true
+    ) {
         self.text = text
         self.color = color
         self.font = font
@@ -247,9 +261,11 @@ public struct DismissConfiguration {
     ///   - autoDismiss: Flag that refers dismiss of AirHUD's auto dismiss after specified duration.
     ///   - autoDismissDuration: Value that refers auto dismiss duration (as seconds) of AirHUD. Initial value is 3 seconds.
     ///   - swipeToDismiss: Flag that refers top swipe to refer ability of AirHUD. Initial value is true.
-    public init(autoDismiss: Bool = true,
-                autoDismissDuration: Double = 3.0,
-                swipeToDismiss: Bool = true) {
+    public init(
+        autoDismiss: Bool = true,
+        autoDismissDuration: Double = 3.0,
+        swipeToDismiss: Bool = true
+    ) {
         self.autoDismiss = autoDismiss
         self.autoDismissDuration = autoDismissDuration
         self.swipeToDismiss = swipeToDismiss
@@ -277,10 +293,12 @@ public struct GeneralConfiguration {
     ///   - topOffset: Value that  presents top offset of AirHUD. Initial value is 16.0/
     ///   - horizontalAlignment: Value that refers horizontal alignment of the hud's content. Initial value is center.
     ///   - verticalAlignment: Value that refers vertical alignment of the hud's content. Initial value is center.
-    public init(backgroundColor: Color = Color(uiColor: .tertiarySystemBackground),
-                topOffset: Double = 16.0,
-                horizontalAlingment: HorizontalAlignment = .center,
-                verticalAlignment: VerticalAlignment = .center) {
+    public init(
+        backgroundColor: Color = Color(uiColor: .tertiarySystemBackground),
+        topOffset: Double = 16.0,
+        horizontalAlingment: HorizontalAlignment = .center,
+        verticalAlignment: VerticalAlignment = .center
+    ) {
         self.backgroundColor = backgroundColor
         self.topOffset = topOffset
         self.horizontalAlignment = horizontalAlingment

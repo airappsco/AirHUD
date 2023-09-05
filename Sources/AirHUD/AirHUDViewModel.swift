@@ -60,8 +60,10 @@ final class AirHUDViewModel: AirHUDViewModelObservable {
         configuration.general
     }
     
-    init(isPresented: Binding<Bool>,
-        configuration: AirHUDConfiguration) {
+    init(
+        isPresented: Binding<Bool>,
+        configuration: AirHUDConfiguration
+    ) {
         self.isPresented = isPresented
         self.configuration = configuration
         self.runAutoDismissIfNeeded()
