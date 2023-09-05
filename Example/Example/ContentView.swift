@@ -15,6 +15,9 @@ struct ContentView: View {
     @State var showTitleAndButton = false
     @State var showTitleAndSubtitle = false
     @State var showCustomized = false
+    
+    let username = "admin"
+    let password = "password123"
 
     var body: some View {
         VStack {
