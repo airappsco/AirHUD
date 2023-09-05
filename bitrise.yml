@@ -145,7 +145,7 @@ workflows:
         - title: ''
         - title_on_error: ''
         - icon_url_on_error: ''
-        - webhook_url: "$SLACK_BUILDS_CHANNEL_WEBHOOK_URL"
+        - webhook_url: "$SLACK_RELEASES_CHANNEL_WEBHOOK_URL"
         - message: ''
         - message_on_error: "Failed to release \U0001F62D"
     envs:
