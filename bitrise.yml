@@ -33,6 +33,7 @@ workflows:
     - restore-spm-cache@1: {}
     - xcode-test@4.7:
         inputs:
+        - xcodebuild_options: "-skipPackagePluginValidation"
         - destination: platform=iOS Simulator,name=iPhone SE (3rd generation),OS=16.4
     - save-spm-cache@1: {}
     - deploy-to-bitrise-io@2: {}
