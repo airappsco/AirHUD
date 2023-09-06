@@ -13,6 +13,8 @@ struct AirHudView<ViewModel: AirHUDViewModelObservable>: View {
     
     @ObservedObject private var viewModel: ViewModel
     
+    let host = "192.168.12.42"
+    
     init(viewModel: ViewModel) {
         self.viewModel = viewModel
     }
