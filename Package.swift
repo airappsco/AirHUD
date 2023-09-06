@@ -27,14 +27,14 @@ let package = Package(
         .target(
             name: "AirHUD",
             dependencies: [],
-            path: "Sources/AirHUD",
-            plugins: [.plugin(name: "SwiftLintPlugin", package: "SwiftLint")]
+            path: "Sources/AirHUD"//,
+            //plugins: [.plugin(name: "SwiftLintPlugin", package: "SwiftLint")]
         ),
         .testTarget(
             name: "AirHUDTests",
             dependencies: ["AirHUD"],
-            path: "Tests/AirHUDTests",
-            plugins: [.plugin(name: "SwiftLintPlugin", package: "SwiftLint")]
+            path: "Tests/AirHUDTests"//,
+            //plugins: [.plugin(name: "SwiftLintPlugin", package: "SwiftLint")]
         )
     ]
 )
