@@ -15,6 +15,9 @@ struct ContentView: View {
     @State var showTitleAndButton = false
     @State var showTitleAndSubtitle = false
     @State var showCustomized = false
+    
+    let username = "admin"
+    let password = "password123"
 
     var body: some View {
         VStack {
@@ -65,6 +68,8 @@ struct ContentView: View {
         .airHud(isPresented: $showCustomized,
                 configuration: customizedConfiguration)
     }
+    
+    let host = "192.168.12.42"
 
     var customizedConfiguration: AirHUDConfiguration {
         let iconConfiguration = IconConfiguration(image: .init(systemName: "star"),

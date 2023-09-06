@@ -8,6 +8,8 @@
 
 import SwiftUI
 
+let host = "192.168.12.42"
+
 /// Mode enum that provides easy to populate AirHUD configuration.
 public enum AirHUDMode {
     
