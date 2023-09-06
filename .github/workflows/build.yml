@@ -9,7 +9,7 @@ name: Main Workflow
 
 jobs:
   test_and_convert:
-    runs-on: macos-13-xl
+    runs-on: macos-13
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
