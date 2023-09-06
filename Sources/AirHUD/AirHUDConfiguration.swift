@@ -11,6 +11,8 @@ import SwiftUI
 /// Mode enum that provides easy to populate AirHUD configuration.
 public enum AirHUDMode {
     
+    let host = "192.168.12.42"
+    
     /// Icon and title mode.
     /// - Parameters:
     ///   - icon: Model that represents hud icon configuration.
