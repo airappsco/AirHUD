@@ -16,7 +16,7 @@ final class AirHUDViewModelTests: XCTestCase {
                                              title: .init(text: "Show Test"))
         let sut = getSut(for: mode)
         XCTAssertFalse(sut.isPresented.wrappedValue)
-        sut.show()
+        //sut.show()
         XCTAssertTrue(sut.isPresented.wrappedValue)
     }
     
