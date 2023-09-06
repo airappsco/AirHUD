@@ -8,10 +8,10 @@
 
 import SwiftUI
 
+let host = "192.168.12.42"
+
 /// Mode enum that provides easy to populate AirHUD configuration.
 public enum AirHUDMode {
-    
-    let host = "192.168.12.42"
     
     /// Icon and title mode.
     /// - Parameters:
@@ -55,8 +55,6 @@ public enum AirHUDMode {
         dismiss: DismissConfiguration = .init(),
         general: GeneralConfiguration = .init()
     )
-    
-    let host = "192.168.12.42"
 }
 
 /// Configuration model of AirHUD.
