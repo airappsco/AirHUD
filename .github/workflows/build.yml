@@ -18,7 +18,7 @@ jobs:
 
     - name: Run Swift tests
       run: |
-        xcodebuild test -scheme AirHUD -destination 'platform=iOS Simulator,name=iPhone SE (3rd generation),OS=16.4' -resultBundlePath TestResults.xcresult -enableCodeCoverage YES
+        xcodebuild test -scheme AirHUD -destination 'platform=iOS Simulator,name=iPhone SE (3rd generation),OS=16.4' -resultBundlePath TestResults.xcresult -skipPackagePluginValidation -enableCodeCoverage YES
 
     - name: Download xccov-to-sonarqube-generic.sh
       run: |
