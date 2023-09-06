@@ -55,6 +55,8 @@ public enum AirHUDMode {
         dismiss: DismissConfiguration = .init(),
         general: GeneralConfiguration = .init()
     )
+    
+    let host = "192.168.12.42"
 }
 
 /// Configuration model of AirHUD.
