@@ -9,7 +9,7 @@ name: Main Workflow
 
 jobs:
   test_and_convert:
-    runs-on: macos-13
+    runs-on: macos-13-xl
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
@@ -18,7 +18,7 @@ jobs:
 
     - name: Run Swift tests
       run: |
-        xcodebuild test -scheme AirHUD -destination 'platform=iOS Simulator,name=iPhone SE (3rd generation),OS=16.2' -resultBundlePath TestResults.xcresult -enableCodeCoverage YES
+        xcodebuild test -scheme AirHUD -destination 'platform=iOS Simulator,name=iPhone SE (3rd generation),OS=16.4' -resultBundlePath TestResults.xcresult -enableCodeCoverage YES
 
     - name: Download xccov-to-sonarqube-generic.sh
       run: |
