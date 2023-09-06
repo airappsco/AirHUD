@@ -52,7 +52,7 @@ jobs:
 
     - name: SonarCloud Scan
       uses: sonarsource/sonarcloud-github-action@master
-      - with:
+      with:
         args: >
           -Dsonar.swift.coverage.reportPaths=cov.xml
       env:
