@@ -24,9 +24,12 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-spm-
 
+    - name: Install xcpretty
+      run: gem install xcpretty
+
     - name: Run Swift tests
       run: |
-        xcodebuild test -scheme AirHUD -destination 'platform=iOS Simulator,name=iPhone SE (3rd generation),OS=16.4' -resultBundlePath TestResults.xcresult -skipPackagePluginValidation -enableCodeCoverage YES
+        xcodebuild test -scheme AirHUD -destination 'platform=iOS Simulator,name=iPhone SE (3rd generation),OS=16.4' -resultBundlePath TestResults.xcresult -skipPackagePluginValidation -enableCodeCoverage YES | xcpretty
 
     - name: Download xccov-to-sonarqube-generic.sh
       run: |
