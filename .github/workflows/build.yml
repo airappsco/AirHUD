@@ -24,8 +24,8 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-spm-
 
-    # - name: Install xcpretty
-    #   run: gem install xcpretty
+    - name: Install xcpretty
+      run: gem install xcpretty
 
     - name: Run Swift tests
       run: |

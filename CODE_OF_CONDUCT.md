@@ -65,7 +65,7 @@ This code of conduct and its related procedures also applies to unacceptable beh
 
 ## 9. Contact Info
 
-open-source@airapps.com
+engineering-opensource@airapps.com
 
 ## 10. License and Attribution
 

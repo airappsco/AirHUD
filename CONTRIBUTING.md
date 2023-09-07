@@ -9,7 +9,7 @@ First off, thank you for considering contributing to **Air Apps**. It's people l
 
 ## Code of Conduct
 
-This project and everyone participating in it is governed by the Air Apps [Code of Conduct](CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code. Please report unacceptable behavior to [open-source@airapps.com].
+This project and everyone participating in it is governed by the Air Apps [Code of Conduct](CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code. Please report unacceptable behavior to [engineering-opensource@airapps.com].
 
 ## How Can I Contribute?
 

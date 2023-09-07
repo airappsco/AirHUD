@@ -1,6 +1,7 @@
 ![Static Badge](https://img.shields.io/badge/license-MIT-lightgray)
 ![Static Badge](https://img.shields.io/badge/iOS-15.0+-blue.svg)
 ![Static Badge](https://img.shields.io/badge/SPM-compatible-brightgreen)
+![SwiftUI](https://img.shields.io/badge/SwiftUI-%20-orange)
 
 ![AirHUD_Project Banner_Github 2](https://github.com/airappsco/AirHUD/assets/101549919/07159edb-163a-4207-9977-010359cfef89)
 
