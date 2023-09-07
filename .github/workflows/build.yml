@@ -16,6 +16,14 @@ jobs:
       with:
         fetch-depth: 0
 
+    - name: Cache SPM dependencies
+      uses: actions/cache@v2
+      with:
+        path: /Users/runner/Library/Developer/Xcode/DerivedData/**/SourcePackages/checkouts 
+        key: ${{ runner.os }}-spm-${{ hashFiles('**/Package.resolved') }}
+        restore-keys: |
+          ${{ runner.os }}-spm-
+
     - name: Run Swift tests
       run: |
         xcodebuild test -scheme AirHUD -destination 'platform=iOS Simulator,name=iPhone SE (3rd generation),OS=16.4' -resultBundlePath TestResults.xcresult -skipPackagePluginValidation -enableCodeCoverage YES
