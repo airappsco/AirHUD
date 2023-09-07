@@ -6,26 +6,26 @@
 
 HUD component written using SwiftUI for **iOS 15** and later
 
-## Features
-- 3 different layouts
-    * Icon and Title
-    * Icon, Title and Button
-    * Icon, Title and Subtitle
-- Customizable Fonts, Colors, Alignments and more
-- Dynamic Type support
-- Compatible with Dark Mode by default
-- Swift Package Manager support
+## 🌟 Features
+- 3 different layouts 📐:
+    * Icon and Title 🏷️
+    * Icon, Title and Button 🖲️
+    * Icon, Title and Subtitle 📄
+- Customizable Fonts, Colors, Alignments and more 🎨
+- Dynamic Type support 🔠
+- Compatible with Dark Mode by default 🌙
+- Swift Package Manager support 📦
 
-## Installation
-AirHUD is distributed via **Swift Package Manager**. <br>
+## 🔧 Installation
+AirHUD is distributed via **Swift Package Manager** 📦. 
 
-To install AirHUD, please add following line to the `dependencies:` section in your `Package.swift` file:
+To install AirHUD, please add the following line to the `dependencies:` section in your `Package.swift` file:
 
 ```swift
 .package(url: "https://github.com/airappsco/AirHUD.git", .upToNextMinor(from: "1.0.0")),
 ```
 
-## Usage
+## 🚀 Usage
 
 Import module in the file which will be used in
 ```swift
@@ -57,7 +57,7 @@ struct ContentView: View {
 
 There are 4 different `airHUD` functions. 3 of them provides ease of use for 3 different layouts with default UI customization. Last one provides customization over HUD elements such as fonts, colors, alignments and more.
 
-### Icon and Title
+### 🏷️ Icon and Title
 
 <p><img src="https://github.com/airappsco/AirHUD/assets/110384781/793f90d8-5618-48ad-83c2-8d4de024f007" width="400"></p>
 
@@ -68,7 +68,7 @@ There are 4 different `airHUD` functions. 3 of them provides ease of use for 3 d
                 title: "Text Copied")
 ```
 
-### Icon, Title and Button
+### 🖲️ Icon, Title and Button
 
 <p><img src="https://github.com/airappsco/AirHUD/assets/110384781/f00ae526-fbb6-48f7-9212-e66eddeca417" width="400"></p>
 
@@ -81,7 +81,7 @@ There are 4 different `airHUD` functions. 3 of them provides ease of use for 3 d
                 buttonAction: nil)
 ```
 
-### Icon, Title and Subtitle
+### 📄 Icon, Title and Subtitle
 
 <p><img src="https://github.com/airappsco/AirHUD/assets/110384781/6e829c89-f52a-4d80-b639-5acfa7f7364c" width="400"></p>
 
@@ -93,7 +93,7 @@ There are 4 different `airHUD` functions. 3 of them provides ease of use for 3 d
                 subtitle: "File moved to \"Personal\"")
 ```
 
-### With Configuration
+### ⚙️ With Configuration
 
 <p><img src="https://github.com/airappsco/AirHUD/assets/110384781/82a1669f-c6b5-4480-8d4f-946b20ce01c1" width="400"></p>
 
