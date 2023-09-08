@@ -10,5 +10,6 @@ lane :test do |options|
   test_package(
         package_name: 'AirHUD',
         package_path: './',
-        scheme: "AirHUD")
+        scheme: "AirHUD",
+        xcargs: ["-skipPackagePluginValidation"])
 end
