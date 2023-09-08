@@ -10,17 +10,17 @@ import SwiftUI
 
 public extension View {
     
-    /// Populates AirHUD with given configuration. It can be used if a customize display is preferred.
-    /// - Parameters:
-    ///   - isPresented: Binding value that shows view is visible or not
-    ///   - configuration: Model that contains all customization of AirHUD
-    /// - Returns: View instance that contains AirHUD as top item according to Z-axis
-    func airHud(
-        isPresented: Binding<Bool>,
-        configuration: AirHUDConfiguration
-    ) -> some View {
-        modifier(AirHUDViewModifier(isPresented: isPresented, configuration: configuration))
-    }
+//    /// Populates AirHUD with given configuration. It can be used if a customize display is preferred.
+//    /// - Parameters:
+//    ///   - isPresented: Binding value that shows view is visible or not
+//    ///   - configuration: Model that contains all customization of AirHUD
+//    /// - Returns: View instance that contains AirHUD as top item according to Z-axis
+//    func airHud(
+//        isPresented: Binding<Bool>,
+//        configuration: AirHUDConfiguration
+//    ) -> some View {
+//        modifier(AirHUDViewModifier(isPresented: isPresented, configuration: configuration))
+//    }
     
     /// Populates AirHUD with icon-title appearance and it uses default visual configurations. It can be preferred for quick and easy use.
     /// - Parameters:
