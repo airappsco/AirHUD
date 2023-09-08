@@ -1,0 +1,83 @@
+---
+format_version: '8'
+default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
+project_type: ios
+trigger_map:
+- tag: "*"
+  workflow: wetransfer_tag_releasing
+workflows:
+  wetransfer_tag_releasing:
+    steps:
+    - cache-pull: {}
+    - script:
+        inputs:
+        - content: |-
+            #!/usr/bin/env bash
+            set -ex
+
+            if [ ! -d "Submodules/WeTransfer-iOS-CI" ] ; then
+              # file does not exist - simply exit with success
+              exit 0
+            fi
+
+            # Get the latest master branch for WeTransfer-iOS-CI if the submodule exists
+            git submodule update --remote --no-fetch Submodules/WeTransfer-iOS-CI
+        title: Update WeTransfer-iOS-CI submodule
+    - bitrise-step-install-bundler: {}
+    - script:
+        inputs:
+        - content: |-
+            envman add --key BREW_MINT --value "$(brew --cellar)/mint"
+            envman add --key BREW_OPT_MINT --value "/usr/local/opt/mint"
+
+            brew install mint
+            brew link mint
+            mint install WeTransfer/GitBuddy
+        title: Brew install
+    - script:
+        title: Set up signed commits
+        inputs:
+        - content: |-
+            #!/bin/bash
+            echo -e $GPG_KEY | gpg --import
+            
+            # Let'em know who is pushing commits to our branches!
+            git config --global user.name "wetransferplatform"
+            git config --global user.email "platform+github@wetransfer.com"
+            git config --global user.signinkey "$WETRANSFERPLATFORM_SIGNIN_KEY"
+            git config --global commit.gpgSign true
+            git config --global tag.gpgSign true      
+    - script:
+        title: Run Fastlane
+        inputs:
+        - content: |-
+            #!/usr/bin/env bash
+            gem install cocoapods
+
+            # Use the environment FASTLANE_TAG_RELEASE_LANE if available. Otherwise, fallback to "release_from_tag"
+            lane=${FASTLANE_TAG_RELEASE_LANE:=release_from_tag}
+            fastlane $lane
+    - script:
+        title: Clean up after failure
+        is_always_run: true
+        run_if: .IsBuildFailed
+        inputs:
+        - content: |-
+            #!/usr/bin/env bash
+
+            fastlane clean_up_release_from_tag
+    - cache-push:
+        run_if: true
+        inputs:
+        - is_debug_mode: 'true'
+        - cache_paths: |
+            $BITRISE_CACHE_DIR
+            $BREW_MINT
+            $BREW_OPT_MINT
+            .build
+app:
+  envs:
+  - opts:
+      is_expand: true
+      is_required: true
+    GPG_KEY: $WETRANSFERPLATFORM_GPG_KEY
