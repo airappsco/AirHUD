@@ -17,8 +17,7 @@ public enum AirHUDMode {
     ///   - title: Model that represents hud title configuration.
     ///   - dismiss: Model that represents hud dismissal configuration.
     ///   - general: Model that represents hud general configuration.
-    case iconAndTitle(
-        icon: IconConfiguration,
+    case iconAndTitle(icon: IconConfiguration,
         title: TitleConfiguration,
         dismiss: DismissConfiguration = .init(),
         general: GeneralConfiguration = .init()
@@ -38,6 +37,9 @@ public enum AirHUDMode {
         dismiss: DismissConfiguration = .init(),
         general: GeneralConfiguration = .init()
     )
+    
+    
+    
     
     /// Icon, title and subtitle mode.
     /// - Parameters:

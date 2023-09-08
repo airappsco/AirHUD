@@ -5,9 +5,10 @@
 //  Created by Ufuk Benlice on 8/15/23.
 //
 
+import XCTest
 @testable import AirHUD
 import SwiftUI
-import XCTest
+
 
 final class AirHUDViewModelTests: XCTestCase {
 
@@ -29,6 +30,12 @@ final class AirHUDViewModelTests: XCTestCase {
         sut.hide()
         XCTAssertFalse(sut.isPresented.wrappedValue)
     }
+    
+    
+    
+    
+    
+    
     
     func test_AutoDismiss() {
         let autoDismissExpectation = XCTestExpectation(description: "Auto Dismiss Expectation")
