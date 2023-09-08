@@ -2,9 +2,13 @@ import "./../Submodules/WeTransfer-iOS-CI/Fastlane/Fastfile"
 
 desc "Run the tests and prepare for Danger"
 lane :test do |options|
-  test_project(
-    project_path: "./",
-    project_name: "AirHUD",
-    scheme: "AirHUD")
-end
+  # test_project(
+  #   project_path: "./",
+  #   project_name: "AirHUD",
+  #   scheme: "AirHUD")
 
+  test_package(
+        package_name: 'AirHUD',
+        package_path: './',
+        scheme: "AirHUD")
+end
