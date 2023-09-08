@@ -1,0 +1,3 @@
+[submodule "WeTransfer-iOS-CI"]
+	path = WeTransfer-iOS-CI
+	url = https://github.com/WeTransfer/WeTransfer-iOS-CI.git

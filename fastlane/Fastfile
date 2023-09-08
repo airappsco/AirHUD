@@ -1,0 +1,17 @@
+import "./../Submodules/WeTransfer-iOS-CI/Fastlane/Fastfile"
+import "./../Submodules/WeTransfer-iOS-CI/Fastlane/shared_lanes.rb"
+
+desc "Run the tests and prepare for Danger"
+lane :test do |options|
+  swift_package_test(
+    package_path: "./../",
+    scheme: "AirHUD"
+  )
+end
+
+def swift_package_test(params)
+  package_path = params[:package_path]
+  scheme = params[:scheme]
+
+  sh "xcodebuild test -scheme #{scheme} -package-path #{package_path}"
+end
