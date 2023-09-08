@@ -2,18 +2,9 @@ import "./../Submodules/WeTransfer-iOS-CI/Fastlane/Fastfile"
 
 desc "Run the tests and prepare for Danger"
 lane :test do |options|
-  swift_package_test(
-    package_path: "../Package.swift",
-    scheme: "AirHUD"
-  )
-end
-
-def swift_package_test(params)
-  package_path = params[:package_path]
-  scheme = params[:scheme]
-
-  # sh "xcodebuild test -scheme #{scheme} -package-path #{package_path}"
-	sh "cd ../"
-	sh "xcodebuild -scheme AirHUD test -skipPackagePluginValidation"
+  test_project(
+    project_path: "../",
+    project_name: "AirHUD",
+    scheme: "AirHUD")
 end
 
