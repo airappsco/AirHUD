@@ -13,6 +13,7 @@ def swift_package_test(params)
   scheme = params[:scheme]
 
   # sh "xcodebuild test -scheme #{scheme} -package-path #{package_path}"
-	sh "xcodebuild -scheme AirHUD -project #{package_path} test -skipPackagePluginValidation"
+	sh "cd ../"
+	sh "xcodebuild -scheme AirHUD test -skipPackagePluginValidation"
 end
 
