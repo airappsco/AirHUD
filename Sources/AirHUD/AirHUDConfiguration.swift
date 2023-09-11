@@ -10,7 +10,7 @@ import SwiftUI
 
 /// Mode enum that provides easy to populate AirHUD configuration.
 public enum AirHUDMode {
-    
+
     /// Icon and title mode.
     /// - Parameters:
     ///   - icon: Model that represents hud icon configuration.
@@ -22,7 +22,7 @@ public enum AirHUDMode {
         dismiss: DismissConfiguration = .init(),
         general: GeneralConfiguration = .init()
     )
-    
+
     /// Icon, title and button mode.
     /// - Parameters:
     ///   - icon: Model that represents hud icon configuration.
@@ -31,6 +31,10 @@ public enum AirHUDMode {
     ///   - dismiss: Model that represents hud dismissal configuration.
     ///   - general: Model that represents hud general configuration.
     case iconTitleAndButton(
+        
+        
+        
+        
         icon: IconConfiguration,
         title: TitleConfiguration,
         button: ButtonConfiguration,

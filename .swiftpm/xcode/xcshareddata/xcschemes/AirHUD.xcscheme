@@ -5,6 +5,25 @@
    <BuildAction
       parallelizeBuildables = "YES"
       buildImplicitDependencies = "YES">
+      <PostActions>
+         <ExecutionAction
+            ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
+            <ActionContent
+               title = "Run Script"
+               scriptText = "containing_folder=$(dirname &quot;${WORKSPACE_PATH}&quot;)&#10;echo &quot;$containing_folder&quot;&#10;cd &quot;$containing_folder/../../&quot;&#10;./Submodules/WeTransfer-iOS-CI/BuildTools/swiftlint.sh&#10;"
+               shellToInvoke = "/bin/sh">
+               <EnvironmentBuildable>
+                  <BuildableReference
+                     BuildableIdentifier = "primary"
+                     BlueprintIdentifier = "AirHUD"
+                     BuildableName = "AirHUD"
+                     BlueprintName = "AirHUD"
+                     ReferencedContainer = "container:">
+                  </BuildableReference>
+               </EnvironmentBuildable>
+            </ActionContent>
+         </ExecutionAction>
+      </PostActions>
       <BuildActionEntries>
          <BuildActionEntry
             buildForTesting = "YES"
@@ -31,20 +50,6 @@
                BlueprintIdentifier = "AirHUDTests"
                BuildableName = "AirHUDTests"
                BlueprintName = "AirHUDTests"
-               ReferencedContainer = "container:">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "SwiftLintPackageSwift"
-               BuildableName = "SwiftLintPackageSwift"
-               BlueprintName = "SwiftLintPackageSwift"
                ReferencedContainer = "container:">
             </BuildableReference>
          </BuildActionEntry>
