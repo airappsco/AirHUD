@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "BF5F861B-7533-4250-9F9E-72F0E07D3622",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "AirHUDTests",
+        "name" : "AirHUDTests"
+      }
+    }
+  ],
+  "version" : 1
+}

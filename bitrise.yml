@@ -2,41 +2,40 @@
 format_version: '11'
 default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
 trigger_map:
-- pull_request_source_branch: "*"
-  pull_request_target_branch: "*"
-  workflow: CI_Build_And_Test
+- pull_request_target_branch: "*"
+  workflow: wetransfer_pr_testing
 - pull_request_source_branch: "*"
   pull_request_target_branch: develop
-  workflow: CI_Build_And_Test
+  workflow: wetransfer_pr_testing
 - pull_request_source_branch: "*"
   pull_request_target_branch: feature/*
-  workflow: CI_Build_And_Test
+  workflow: wetransfer_pr_testing
 - pull_request_source_branch: "*"
   pull_request_target_branch: hotfix/*
-  workflow: CI_Build_And_Test
+  workflow: wetransfer_pr_testing
 - pull_request_source_branch: "*"
   pull_request_target_branch: release/*
-  workflow: CI_Build_And_Test
+  workflow: wetransfer_pr_testing
 - pull_request_source_branch: "*"
   pull_request_target_branch: master
-  workflow: CI_Build_And_Test
+  workflow: wetransfer_pr_testing
 project_type: ios
 workflows:
-  CI_Build_And_Test:
+  wetransfer_pr_testing:
     steps:
     - set-git-credentials@1:
         inputs:
-        - git_email_address: bitrise.build@bot.com
-    - activate-ssh-key@4:
+        - git_email_address: "$GIT_BOT_EMAIL"
+    - activate-ssh-key:
         run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
-    - git-clone@8.1: {}
-    - restore-spm-cache@1: {}
-    - xcode-test@4.7:
+    - git-clone: {}
+    - script:
+        title: Continue from WeTransfer-iOS-CI repo
         inputs:
-        - xcodebuild_options: "-skipPackagePluginValidation"
-        - destination: platform=iOS Simulator,name=iPhone SE (3rd generation),OS=16.4
-    - save-spm-cache@1: {}
-    - deploy-to-bitrise-io@2: {}
+        - content: |-
+            #!/bin/bash
+            set -ex
+            bitrise run --config ./Submodules/WeTransfer-iOS-CI/Bitrise/testing_bitrise.yml "${BITRISE_TRIGGERED_WORKFLOW_ID}"
   Merge_Develop_Into_Master_For_Release:
     steps:
     - set-git-credentials@1:
@@ -174,3 +173,6 @@ app:
   - opts:
       is_expand: false
     BITRISE_SCHEME: AirHUD
+  - opts:
+      is_expand: false
+    MINIMUM_COVERAGE: '70'
