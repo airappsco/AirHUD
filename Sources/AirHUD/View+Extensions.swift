@@ -22,14 +22,6 @@ public extension View {
         modifier(AirHUDViewModifier(isPresented: isPresented, configuration: configuration))
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
     /// Populates AirHUD with icon-title appearance and it uses default visual configurations. It can be preferred for quick and easy use.
     /// - Parameters:
     ///   - isPresented: Binding value that shows view is visible or not

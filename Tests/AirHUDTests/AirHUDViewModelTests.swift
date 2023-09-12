@@ -3,12 +3,12 @@
 //  AirHUD
 //
 //  Created by Ufuk Benlice on 8/15/23.
+//  Copyright ©2023 AirApps. All rights reserved.
 //
 
-import XCTest
 @testable import AirHUD
 import SwiftUI
-
+import XCTest
 
 final class AirHUDViewModelTests: XCTestCase {
 
@@ -17,7 +17,7 @@ final class AirHUDViewModelTests: XCTestCase {
                                              title: .init(text: "Show Test"))
         let sut = getSut(for: mode)
         XCTAssertFalse(sut.isPresented.wrappedValue)
-//        sut.show()
+        sut.show()
         XCTAssertTrue(sut.isPresented.wrappedValue)
     }
     
@@ -30,12 +30,6 @@ final class AirHUDViewModelTests: XCTestCase {
         sut.hide()
         XCTAssertFalse(sut.isPresented.wrappedValue)
     }
-    
-    
-    
-    
-    
-    
     
     func test_AutoDismiss() {
         let autoDismissExpectation = XCTestExpectation(description: "Auto Dismiss Expectation")
