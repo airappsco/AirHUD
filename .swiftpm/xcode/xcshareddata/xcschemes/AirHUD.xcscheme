@@ -10,7 +10,7 @@
             ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
             <ActionContent
                title = "Run Script"
-               scriptText = "containing_folder=$(dirname &quot;${WORKSPACE_PATH}&quot;)&#10;echo &quot;$containing_folder&quot;&#10;cd &quot;$containing_folder/../../&quot;&#10;./Submodules/WeTransfer-iOS-CI/BuildTools/swiftlint.sh&#10;"
+               scriptText = "workspaceFolder=$(dirname &quot;${WORKSPACE_PATH}&quot;)&#10;echo &quot;$workspaceFolder&quot;&#10;cd &quot;$workspaceFolder/../../&quot;&#10;./Submodules/WeTransfer-iOS-CI/BuildTools/swiftlint.sh&#10;"
                shellToInvoke = "/bin/sh">
                <EnvironmentBuildable>
                   <BuildableReference
@@ -74,16 +74,6 @@
                BlueprintIdentifier = "AirHUDTests"
                BuildableName = "AirHUDTests"
                BlueprintName = "AirHUDTests"
-               ReferencedContainer = "container:">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "SwiftLintTests"
-               BuildableName = "SwiftLintTests"
-               BlueprintName = "SwiftLintTests"
                ReferencedContainer = "container:">
             </BuildableReference>
          </TestableReference>

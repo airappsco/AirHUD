@@ -101,6 +101,7 @@
 				E1F8E4662A8B67B3007892F2 /* Sources */,
 				E1F8E4672A8B67B3007892F2 /* Frameworks */,
 				E1F8E4682A8B67B3007892F2 /* Resources */,
+				93A298802AB046B4003B5C24 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -158,6 +159,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		93A298802AB046B4003B5C24 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cd \"${SRCROOT}/../\"\n./Submodules/WeTransfer-iOS-CI/BuildTools/swiftlint.sh\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E1F8E4662A8B67B3007892F2 /* Sources */ = {
