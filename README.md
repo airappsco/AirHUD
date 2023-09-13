@@ -128,6 +128,22 @@ There are 4 different `airHUD` functions. 3 of them provides ease of use for 3 d
 
 You can also check the **[Example project](Example)** for usage.
 
+## About Air Apps
+
+Air Apps is an iOS mobile application studio dedicated to creating practical solutions for everyday challenges. With a portfolio of over 30 mobile applications spanning Fitness, Productivity, Creative, and Learning, we aim to simplify lives. Our unique approach includes a fully remote work environment, allowing our diverse team to collaborate from around the world. As an AI-first company, we stay up-to-date with technology trends, integrating them into our products to enhance user experiences. Our ongoing mission is to provide value to both our users and our team, fostering continuous improvement and a commitment to making life easier.
+
+Learn more about us in the following links:
+
+**Website:** [airapps.co](https://airapps.co/)  
+**Our Apps:** [View on App Store](https://apps.apple.com/us/developer/wzp-solutions-lda/id1316153435)  
+**Careers:** [airapps.co/careers](https://airapps.co/careers/)  
+**Linkedin:** [linkedin.com/company/airapps](http://linkedin.com/company/airapps/)  
+**Blog:** [blog.airapps.co](https://blog.airapps.co/)  
+**Instagram:** [@airappsco](https://www.instagram.com/airappsco/)  
+**Twitter:** [@airappsco](https://twitter.com/airappsco/)  
+**Facebook:** [facebook.com/airappsco](https://www.facebook.com/airappsco/)  
+**Youtube:** [Youtube @airapps](https://www.youtube.com/@airapps)
+
 ## License
 
 MIT License
