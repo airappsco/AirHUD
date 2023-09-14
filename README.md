@@ -133,7 +133,7 @@ Want to contribute to **Air Apps**? Please refer to the following guide [here](.
 
 ## About Air Apps
 
-**Air Apps** is a leading mobile application publisher specializing in iOS and macOS dedicated to creating practical solutions for everyday challenges. With a portfolio of over 30 mobile applications spanning Fitness, Productivity, Creative, and Learning, we aim to simplify lives. Our unique approach includes a fully remote work environment, allowing our diverse team to collaborate from around the world. As an AI-first company, we stay up-to-date with technology trends, integrating them into our products to enhance user experiences. Our ongoing mission is to provide value to both our users and our team, fostering continuous improvement and a commitment to making life easier.
+**Air Apps** is a leading mobile application publisher dedicated to creating practical solutions for everyday challenges. With a portfolio of over 30 mobile applications spanning Fitness, Productivity, Creative, and Learning, we aim to simplify lives. Our unique approach includes a fully remote work environment, allowing our diverse team to collaborate from around the world. As an AI-first company, we stay up-to-date with technology trends, integrating them into our products to enhance user experiences. Our ongoing mission is to provide value to both our users and our team, fostering continuous improvement and a commitment to making life easier.
 
 Learn more about us in the following links:
 
