@@ -80,7 +80,7 @@ struct ContentView: View {
         let dismissConfiguration = DismissConfiguration(autoDismiss: false)
         let generalConfiguration = GeneralConfiguration(backgroundColor: .orange,
                                                         horizontalAlingment: .center,
-                                                        verticalAlignment: .bottom)
+                                                        verticalAlignment: .center)
         let mode: AirHUDMode = .iconTitleAndSubtitle(icon: iconConfiguration,
                                                      title: titleConfiguration,
                                                      subtitle: subtitleConfiguration,
