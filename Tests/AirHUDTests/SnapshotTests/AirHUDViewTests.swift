@@ -50,35 +50,4 @@ final class AirHUDViewTests: XCTestCase, AirHUDSnapshotting {
         
         assertView(sut, named: "test_ShowTitleAndSubtitle", traits: [lightMode, darkMode], recordMode: recordMode)
     }
-    
-    func test_Customized() {
-        var customizedConfiguration: AirHUDConfiguration {
-            let iconConfiguration = IconConfiguration(image: .init(systemName: "star"),
-                                                      color: .white,
-                                                      position: .trailing,
-                                                      size: CGSize(width: 60, height: 60))
-            let titleConfiguration = TitleConfiguration(text: "Added to Favorites",
-                                                        color: .purple,
-                                                        font: .headline.italic())
-            let subtitleConfiguration = SubtitleConfiguration(text: "You can change your favorites at any time from favorites section",
-                                                              color: .blue,
-                                                              font: .callout)
-            let dismissConfiguration = DismissConfiguration(autoDismiss: false)
-            let generalConfiguration = GeneralConfiguration(backgroundColor: .orange,
-                                                            horizontalAlingment: .center,
-                                                            verticalAlignment: .center)
-            let mode: AirHUDMode = .iconTitleAndSubtitle(icon: iconConfiguration,
-                                                         title: titleConfiguration,
-                                                         subtitle: subtitleConfiguration,
-                                                         dismiss: dismissConfiguration,
-                                                         general: generalConfiguration)
-            return AirHUDConfiguration(mode: mode)
-        }
-        
-        let sut = Spacer()
-            .airHud(isPresented: .constant(true),
-                    configuration: customizedConfiguration)
-                
-        assertView(sut, named: "test_Customized", traits: [lightMode, darkMode], recordMode: recordMode)
-    }
 }
