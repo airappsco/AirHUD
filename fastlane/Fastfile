@@ -5,5 +5,7 @@ lane :test do |options|
   test_package(
         package_name: 'AirHUD',
         package_path: './',
-        scheme: "AirHUD")
+        scheme: "AirHUD",
+	    destination: 'platform=iOS Simulator,name=iPhone SE (3rd generation)'
+  )
 end
