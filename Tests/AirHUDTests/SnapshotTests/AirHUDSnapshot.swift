@@ -35,11 +35,7 @@ extension AirHUDSnapshotting {
     }
     
     var baseDevices: [String: ViewImageConfig] {
-        [
-            "iPhoneX": .iPhoneX,
-            "iPadPro10_5": .iPadPro10_5,
-            "iPadMini(.landscape)": .iPadMini(.landscape)
-        ]
+        ["iPhoneX": .iPhoneX, "iPadPro10_5": .iPadPro10_5, "iPadMini(.landscape)": .iPadMini(.landscape)]
     }
     
     var dynamicSizes: [ContentSizeCategory] {
@@ -62,11 +58,7 @@ extension AirHUDSnapshotting {
         ("rtl", UITraitCollection(layoutDirection: .rightToLeft))
     }
     
-    func assertViewInAllCases<SnapshotView: View>(
-        _ view: SnapshotView,
-        named: String,
-        recordMode: Bool = false
-    ) {
+    func assertViewInAllCases<SnapshotView: View>(_ view: SnapshotView, named: String, recordMode: Bool = false) {
         let traitTuples: [(String, UITraitCollection)] = [darkMode, lightMode, rtl]
         allDevices.forEach { device in
             traitTuples.forEach { trait in
@@ -117,12 +109,5 @@ extension SwiftUI.View {
         let viewController = UIHostingController(rootView: self)
         viewController.view.frame = UIScreen.main.bounds
         return viewController
-    }
-    
-    func toNavigation() -> UINavigationController {
-        let viewController = UIHostingController(rootView: self)
-        viewController.view.frame = UIScreen.main.bounds
-        let navigation = UINavigationController(rootViewController: viewController)
-        return navigation
     }
 }
