@@ -13,7 +13,8 @@ let package = Package(
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
             name: "AirHUD",
-            targets: ["AirHUD"]),
+            targets: ["AirHUD"]
+        )
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
@@ -25,10 +26,12 @@ let package = Package(
         .target(
             name: "AirHUD",
             dependencies: [],
-            path: "Sources/AirHUD"),
+            path: "Sources/AirHUD"
+        ),
         .testTarget(
             name: "AirHUDTests",
             dependencies: ["AirHUD"],
-            path: "Tests/AirHUDTests"),
+            path: "Tests/AirHUDTests"
+        )
     ]
 )

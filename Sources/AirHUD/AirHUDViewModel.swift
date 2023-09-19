@@ -3,7 +3,7 @@
 //  AirHUD
 //
 //  Created by Ufuk Benlice on 8/15/23.
-//  Copyright ©2023 AirApps. All rights reserved.
+//  Copyright © 2023 AirApps. All rights reserved.
 //
 
 import Foundation
@@ -60,8 +60,10 @@ final class AirHUDViewModel: AirHUDViewModelObservable {
         configuration.general
     }
     
-    init(isPresented: Binding<Bool>,
-        configuration: AirHUDConfiguration) {
+    init(
+        isPresented: Binding<Bool>,
+        configuration: AirHUDConfiguration
+    ) {
         self.isPresented = isPresented
         self.configuration = configuration
         self.runAutoDismissIfNeeded()

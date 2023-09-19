@@ -3,7 +3,7 @@
 //  Example
 //
 //  Created by Ufuk Benlice on 8/15/23.
-//  Copyright ©2023 AirApps. All rights reserved.
+//  Copyright © 2023 AirApps. All rights reserved.
 //
 
 import AirHUD
@@ -11,10 +11,10 @@ import SwiftUI
 
 struct ContentView: View {
 
-    @State var showIconAndTitle: Bool = false
-    @State var showTitleAndButton: Bool = false
-    @State var showTitleAndSubtitle: Bool = false
-    @State var showCustomized: Bool = false
+    @State var showIconAndTitle = false
+    @State var showTitleAndButton = false
+    @State var showTitleAndSubtitle = false
+    @State var showCustomized = false
 
     var body: some View {
         VStack {
