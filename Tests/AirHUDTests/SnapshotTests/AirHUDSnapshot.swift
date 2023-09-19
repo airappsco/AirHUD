@@ -3,7 +3,7 @@
 //  AirHUD
 //
 //  Created by Ufuk Benlice on 19/09/23.
-//  Copyright ©2023 AirApps. All rights reserved.
+//  Copyright © 2023 AirApps. All rights reserved.
 //
 
 import SnapshotTesting
@@ -62,7 +62,11 @@ extension AirHUDSnapshotting {
         ("rtl", UITraitCollection(layoutDirection: .rightToLeft))
     }
     
-    func assertViewInAllCases<SnapshotView: View>(_ view: SnapshotView, named: String, recordMode: Bool = false) {
+    func assertViewInAllCases<SnapshotView: View>(
+        _ view: SnapshotView,
+        named: String,
+        recordMode: Bool = false
+    ) {
         let traitTuples: [(String, UITraitCollection)] = [darkMode, lightMode, rtl]
         allDevices.forEach { device in
             traitTuples.forEach { trait in
@@ -86,10 +90,12 @@ extension AirHUDSnapshotting {
         }
     }
     
-    func assertView<SnapshotView: View>(_ view: SnapshotView,
-                                        named: String,
-                                        trait: (String, UITraitCollection)? = nil,
-                                        recordMode: Bool = false) {
+    func assertView<SnapshotView: View>(
+        _ view: SnapshotView,
+        named: String,
+        trait: (String, UITraitCollection)? = nil,
+        recordMode: Bool = false
+    ) {
         let selectedTrait = trait ?? lightMode
         baseDevices.forEach { device in
             assertSnapshot(

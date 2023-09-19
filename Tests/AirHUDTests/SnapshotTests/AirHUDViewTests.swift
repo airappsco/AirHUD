@@ -3,7 +3,7 @@
 //  AirHUD
 //
 //  Created by Ufuk Benlice on 19/09/23.
-//  Copyright ©2023 AirApps. All rights reserved.
+//  Copyright © 2023 AirApps. All rights reserved.
 //
 
 @testable import AirHUD
@@ -11,13 +11,12 @@ import SnapshotTesting
 import SwiftUI
 import XCTest
 
-// swiftlint:disable implicitly_unwrapped_optional
 final class AirHUDViewTests: XCTestCase, AirHUDSnapshotting {
     
     var fileName: StaticString = #file
     var className = String(describing: AirHUDViewTests.self)
     
-    var recordMode: Bool = false
+    var recordMode = false
     
     func test_ShowIconAndTitle() {
         let sut = Spacer()
@@ -70,7 +69,7 @@ final class AirHUDViewTests: XCTestCase, AirHUDSnapshotting {
             let dismissConfiguration = DismissConfiguration(autoDismiss: false)
             let generalConfiguration = GeneralConfiguration(backgroundColor: .orange,
                                                             horizontalAlingment: .center,
-                                                            verticalAlignment: .bottom)
+                                                            verticalAlignment: .center)
             let mode: AirHUDMode = .iconTitleAndSubtitle(icon: iconConfiguration,
                                                          title: titleConfiguration,
                                                          subtitle: subtitleConfiguration,
