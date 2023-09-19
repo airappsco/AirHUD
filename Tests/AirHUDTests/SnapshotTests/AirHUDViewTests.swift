@@ -25,8 +25,7 @@ final class AirHUDViewTests: XCTestCase, AirHUDSnapshotting {
                     iconColor: Color(uiColor: .systemBlue),
                     title: "Text Copied")
         
-        assertView(sut, named: "test_ShowIconAndTitle", trait: lightMode, recordMode: recordMode)
-        assertView(sut, named: "test_ShowIconAndTitle", trait: darkMode, recordMode: recordMode)
+        assertView(sut, named: "test_ShowIconAndTitle", traits: [lightMode, darkMode], recordMode: recordMode)
     }
     
     func test_ShowTitleAndButton() {
@@ -38,8 +37,7 @@ final class AirHUDViewTests: XCTestCase, AirHUDSnapshotting {
                     buttonTitle: "Undo",
                     buttonAction: nil)
         
-        assertView(sut, named: "test_ShowTitleAndButton", trait: lightMode, recordMode: recordMode)
-        assertView(sut, named: "test_ShowTitleAndButton", trait: darkMode, recordMode: recordMode)
+        assertView(sut, named: "test_ShowTitleAndButton", traits: [lightMode, darkMode], recordMode: recordMode)
     }
     
     func test_ShowTitleAndSubtitle() {
@@ -50,8 +48,7 @@ final class AirHUDViewTests: XCTestCase, AirHUDSnapshotting {
                     title: "Moved",
                     subtitle: "File moved to \"Personal\"")
         
-        assertView(sut, named: "test_ShowTitleAndSubtitle", trait: lightMode, recordMode: recordMode)
-        assertView(sut, named: "test_ShowTitleAndSubtitle", trait: darkMode, recordMode: recordMode)
+        assertView(sut, named: "test_ShowTitleAndSubtitle", traits: [lightMode, darkMode], recordMode: recordMode)
     }
     
     func test_Customized() {
@@ -82,7 +79,6 @@ final class AirHUDViewTests: XCTestCase, AirHUDSnapshotting {
             .airHud(isPresented: .constant(true),
                     configuration: customizedConfiguration)
                 
-        assertView(sut, named: "test_Customized", trait: lightMode, recordMode: recordMode)
-        assertView(sut, named: "test_Customized", trait: darkMode, recordMode: recordMode)
+        assertView(sut, named: "test_Customized", traits: [lightMode, darkMode], recordMode: recordMode)
     }
 }

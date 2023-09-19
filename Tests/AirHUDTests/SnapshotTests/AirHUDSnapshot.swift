@@ -93,19 +93,21 @@ extension AirHUDSnapshotting {
     func assertView<SnapshotView: View>(
         _ view: SnapshotView,
         named: String,
-        trait: (String, UITraitCollection)? = nil,
+        traits: [(String, UITraitCollection)] = [],
         recordMode: Bool = false
     ) {
-        let selectedTrait = trait ?? lightMode
-        baseDevices.forEach { device in
-            assertSnapshot(
-                matching: view.toVC(),
-                as: .image(on: device.1, traits: selectedTrait.1),
-                named: "\(named)-\(device.key)-Trait:\(selectedTrait.0)",
-                record: recordMode,
-                file: fileName,
-                testName: className
-            )
+        let selectedTraits = traits.isEmpty ? [lightMode] : traits
+        for trait in selectedTraits {
+            baseDevices.forEach { device in
+                assertSnapshot(
+                    matching: view.toVC(),
+                    as: .image(on: device.1, traits: trait.1),
+                    named: "\(named)-\(device.key)-Trait:\(trait.0)",
+                    record: recordMode,
+                    file: fileName,
+                    testName: className
+                )
+            }
         }
     }
 }
