@@ -35,7 +35,11 @@ extension AirHUDSnapshotting {
     }
     
     var baseDevices: [String: ViewImageConfig] {
-        ["iPhone13": .iPhone13]
+        [
+            "iPhoneX": .iPhoneX,
+            "iPadPro10_5": .iPadPro10_5,
+            "iPadMini(.landscape)": .iPadMini(.landscape)
+        ]
     }
     
     var dynamicSizes: [ContentSizeCategory] {
