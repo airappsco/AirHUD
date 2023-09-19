@@ -2,7 +2,7 @@
 ![Static Badge](https://img.shields.io/badge/iOS-15.0+-blue.svg)
 ![Static Badge](https://img.shields.io/badge/SPM-compatible-brightgreen)
 
-![AirHUD_Project Banner_Github 2](https://github.com/airappsco/AirHUD/assets/101549919/07159edb-163a-4207-9977-010359cfef89)
+![AirHUD_Project Banner_Github 2](https://github.com/airappsco/AirHUD/assets/104971436/d838c0df-60ba-4def-baef-b25239a28eaa)
 
 HUD component written using SwiftUI for **iOS 15** and later
 
@@ -59,7 +59,7 @@ There are 4 different `airHUD` functions. 3 of them provides ease of use for 3 d
 
 ### 🏷️ Icon and Title
 
-<p><img src="https://github.com/airappsco/AirHUD/assets/110384781/793f90d8-5618-48ad-83c2-8d4de024f007" width="400"></p>
+<p><img src="https://github.com/airappsco/AirHUD/assets/104971436/5288d2d9-c27c-4eb5-bc8d-9232e38f1746" width="400"></p>
 
 ```swift
         .airHud(isPresented: $isPresented,
@@ -70,7 +70,7 @@ There are 4 different `airHUD` functions. 3 of them provides ease of use for 3 d
 
 ### 🖲️ Icon, Title and Button
 
-<p><img src="https://github.com/airappsco/AirHUD/assets/110384781/f00ae526-fbb6-48f7-9212-e66eddeca417" width="400"></p>
+<p><img src="https://github.com/airappsco/AirHUD/assets/104971436/34336c04-c2d9-4f0c-9f1e-a751bce85470" width="400"></p>
 
 ```swift
         .airHud(isPresented: $isPresented,
@@ -83,7 +83,7 @@ There are 4 different `airHUD` functions. 3 of them provides ease of use for 3 d
 
 ### 📄 Icon, Title and Subtitle
 
-<p><img src="https://github.com/airappsco/AirHUD/assets/110384781/6e829c89-f52a-4d80-b639-5acfa7f7364c" width="400"></p>
+<p><img src="https://github.com/airappsco/AirHUD/assets/104971436/adbc8bb0-bac3-47da-b53c-5d44e3d0dbef" width="400"></p>
 
 ```swift
         .airHud(isPresented: $isPresented,
@@ -95,7 +95,7 @@ There are 4 different `airHUD` functions. 3 of them provides ease of use for 3 d
 
 ### ⚙️ With Configuration
 
-<p><img src="https://github.com/airappsco/AirHUD/assets/110384781/82a1669f-c6b5-4480-8d4f-946b20ce01c1" width="400"></p>
+<p><img src="https://github.com/airappsco/AirHUD/assets/104971436/29ea12c2-9667-4770-a457-351f22ec0302" width="400"></p>
 
 ```swift
     var hudConfiguration: AirHUDConfiguration {
