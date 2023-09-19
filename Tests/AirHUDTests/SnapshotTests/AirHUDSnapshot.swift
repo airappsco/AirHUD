@@ -35,7 +35,7 @@ extension AirHUDSnapshotting {
     }
     
     var baseDevices: [String: ViewImageConfig] {
-        ["iPhoneSe": .iPhoneSe]
+        ["iPhone13": .iPhone13]
     }
     
     var dynamicSizes: [ContentSizeCategory] {
