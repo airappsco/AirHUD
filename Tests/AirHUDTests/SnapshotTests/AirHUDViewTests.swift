@@ -18,40 +18,7 @@ final class AirHUDViewTests: XCTestCase, AirHUDSnapshotting {
     
     var recordMode = false
     
-    func test_ShowIconAndTitle() {
-        let sut = Spacer()
-            .airHud(isPresented: .constant(true),
-                    iconImage: Image(systemName: "doc.on.doc"),
-                    iconColor: Color(uiColor: .systemBlue),
-                    title: "Text Copied")
-        
-        assertView(sut, named: "test_ShowIconAndTitle", traits: [lightMode, darkMode], recordMode: recordMode)
-    }
-    
-    func test_ShowTitleAndButton() {
-        let sut = Spacer()
-            .airHud(isPresented: .constant(true),
-                    iconImage: Image(systemName: "trash"),
-                    iconColor: Color(uiColor: .systemRed),
-                    title: "Conversation Deleted",
-                    buttonTitle: "Undo",
-                    buttonAction: nil)
-        
-        assertView(sut, named: "test_ShowTitleAndButton", traits: [lightMode, darkMode], recordMode: recordMode)
-    }
-    
-    func test_ShowTitleAndSubtitle() {
-        let sut = Spacer()
-            .airHud(isPresented: .constant(true),
-                    iconImage: Image(systemName: "folder"),
-                    iconColor: Color(uiColor: .systemBlue),
-                    title: "Moved",
-                    subtitle: "File moved to \"Personal\"")
-        
-        assertView(sut, named: "test_ShowTitleAndSubtitle", traits: [lightMode, darkMode], recordMode: recordMode)
-    }
-    
-    func test_Customized() {
+    func testAirHud() {
         var customizedConfiguration: AirHUDConfiguration {
             let iconConfiguration = IconConfiguration(image: .init(systemName: "star"),
                                                       color: .white,
@@ -78,7 +45,7 @@ final class AirHUDViewTests: XCTestCase, AirHUDSnapshotting {
         let sut = Spacer()
             .airHud(isPresented: .constant(true),
                     configuration: customizedConfiguration)
-                
-        assertView(sut, named: "test_Customized", traits: [lightMode, darkMode], recordMode: recordMode)
+        
+        assertViewInAllCases(sut, named: "test_Customized", recordMode: recordMode)
     }
 }
