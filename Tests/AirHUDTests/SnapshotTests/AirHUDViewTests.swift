@@ -17,7 +17,7 @@ final class AirHUDViewTests: XCTestCase, AirHUDSnapshotting {
     var fileName: StaticString = #file
     var className = String(describing: AirHUDViewTests.self)
     
-    var recordMode: Bool = true
+    var recordMode: Bool = false
     
     func test_ShowIconAndTitle() {
         let sut = Spacer()
