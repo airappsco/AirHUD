@@ -9,6 +9,7 @@
 import Foundation
 import SwiftUI
 
+@available(iOS 13.0, *)
 struct AirHudView<ViewModel: AirHUDViewModelObservable>: View {
     
     @ObservedObject private var viewModel: ViewModel
@@ -158,6 +159,7 @@ struct AirHudView<ViewModel: AirHUDViewModelObservable>: View {
 }
 
 // MARK: Private Helpers
+@available(iOS 13.0, *)
 private extension AirHudView {
     func lineLimitOfTitle() -> Int {
         switch viewModel.mode {

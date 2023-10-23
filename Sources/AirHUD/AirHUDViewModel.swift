@@ -9,6 +9,7 @@
 import Foundation
 import SwiftUI
 
+@available(iOS 13.0, *)
 protocol AirHUDViewModelObservable: ObservableObject {
     var isPresented: Binding<Bool> { get }
     
@@ -25,6 +26,7 @@ protocol AirHUDViewModelObservable: ObservableObject {
     func hide()
 }
 
+@available(iOS 13.0, *)
 final class AirHUDViewModel: AirHUDViewModelObservable {
     
     let isPresented: Binding<Bool>

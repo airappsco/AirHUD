@@ -12,6 +12,7 @@ import XCTest
 
 final class AirHUDViewModelTests: XCTestCase {
 
+    @available(iOS 13.0, *)
     func test_Show() {
         let mode: AirHUDMode = .iconAndTitle(icon: .init(image: Image(""), color: .blue),
                                              title: .init(text: "Show Test"))
@@ -21,6 +22,7 @@ final class AirHUDViewModelTests: XCTestCase {
         XCTAssertTrue(sut.isPresented.wrappedValue)
     }
     
+    @available(iOS 13.0, *)
     func test_Hide() {
         let mode: AirHUDMode = .iconAndTitle(icon: .init(image: Image(""), color: .blue),
                                              title: .init(text: "Hide Test"))
@@ -31,6 +33,7 @@ final class AirHUDViewModelTests: XCTestCase {
         XCTAssertFalse(sut.isPresented.wrappedValue)
     }
     
+    @available(iOS 13.0, *)
     func test_AutoDismiss() {
         let autoDismissExpectation = XCTestExpectation(description: "Auto Dismiss Expectation")
         let mode: AirHUDMode = .iconAndTitle(icon: .init(image: Image(""), color: .blue),
@@ -47,6 +50,7 @@ final class AirHUDViewModelTests: XCTestCase {
         wait(for: [autoDismissExpectation], timeout: 1.0)
     }
     
+    @available(iOS 13.0, *)
     func test_IconAndTitleModeProperties() {
         let mode: AirHUDMode = .iconAndTitle(icon: .init(image: Image(""), color: .blue),
                                              title: .init(text: "Title1"))
@@ -60,6 +64,7 @@ final class AirHUDViewModelTests: XCTestCase {
         XCTAssertNotNil(sut.general)
     }
     
+    @available(iOS 13.0, *)
     func test_IconTitleAndButtonModeProperties() {
         let mode: AirHUDMode = .iconTitleAndButton(icon: .init(image: Image(""), color: .blue),
                                                    title: .init(text: "Title2"),
@@ -74,6 +79,7 @@ final class AirHUDViewModelTests: XCTestCase {
         XCTAssertNotNil(sut.general)
     }
     
+    @available(iOS 13.0, *)
     func testIconTitleAndSubtitleModeProperties() {
         let mode: AirHUDMode = .iconTitleAndSubtitle(icon: .init(image: Image(""), color: .blue),
                                                      title: .init(text: "Title3"),
@@ -92,6 +98,7 @@ final class AirHUDViewModelTests: XCTestCase {
 
 private extension AirHUDViewModelTests {
     
+    @available(iOS 13.0, *)
     func getSut(for mode: AirHUDMode) -> any AirHUDViewModelObservable {
         var bindingValue = false
         let binding = Binding(get: { bindingValue }, set: { bindingValue = $0 })

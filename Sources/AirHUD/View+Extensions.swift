@@ -7,6 +7,7 @@
 //
 import SwiftUI
 
+@available(iOS 13.0, *)
 public extension View {
     
     /// Populates AirHUD with given configuration. It can be used if a customize display is preferred.
