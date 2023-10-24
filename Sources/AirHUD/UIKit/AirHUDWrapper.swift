@@ -12,6 +12,11 @@ import UIKit
 
 @available(iOS 13.0, *)
 public class AirHUDIKitState: ObservableObject {
+    
+    public init(isPresented: Bool = false) {
+        self.isPresented = isPresented
+    }
+    
     @Published var isPresented = false
 }
 
