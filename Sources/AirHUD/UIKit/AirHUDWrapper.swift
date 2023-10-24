@@ -11,7 +11,7 @@ import SwiftUI
 import UIKit
 
 @available(iOS 13.0, *)
-class AirHUDIKitState: ObservableObject {
+public class AirHUDIKitState: ObservableObject {
     @Published var isPresented = false
 }
 
@@ -27,7 +27,7 @@ public struct AirHUDContainer: View {
     @ObservedObject var state: AirHUDIKitState
     public var hudType: HUDType
     
-    init(state: AirHUDIKitState, hudType: HUDType) {
+    public init(state: AirHUDIKitState, hudType: HUDType) {
         self.state = state
         self.hudType = hudType
     }
