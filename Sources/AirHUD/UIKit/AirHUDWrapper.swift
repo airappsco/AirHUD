@@ -17,7 +17,7 @@ public class AirHUDIKitState: ObservableObject {
         self.isPresented = isPresented
     }
     
-    @Published var isPresented = false
+    @Published public var isPresented = false
 }
 
 @available(iOS 13.0, *)
