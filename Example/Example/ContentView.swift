@@ -15,6 +15,7 @@ struct ContentView: View {
     @State var showTitleAndButton = false
     @State var showTitleAndSubtitle = false
     @State var showCustomized = false
+    @State var showUIViewController = false
 
     var body: some View {
         VStack {
@@ -44,6 +45,9 @@ struct ContentView: View {
                     showTitleAndButton = false
                     showTitleAndSubtitle = false
                 }
+                Button("Test UIKit Wrapper Version") {
+                    showUIViewController.toggle()
+                }
             }
             Spacer()
         }
@@ -64,6 +68,9 @@ struct ContentView: View {
                 subtitle: "File moved to \"Personal\"")
         .airHud(isPresented: $showCustomized,
                 configuration: customizedConfiguration)
+        .sheet(isPresented: $showUIViewController) {
+            ViewControllerRepresentable()
+        }
     }
 
     var customizedConfiguration: AirHUDConfiguration {
