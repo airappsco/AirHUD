@@ -231,7 +231,13 @@ public class UIKitViewController: UIViewController {
         airHUDView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(airHUDView)
         
-        airHUDView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        NSLayoutConstraint.activate([
+            airHUDView.topAnchor.constraint(equalTo: view.topAnchor),
+            airHUDView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            airHUDView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            airHUDView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        ])
+        
         self.addChild(airHUDHostingController)
         airHUDHostingController.didMove(toParent: self)
     }
@@ -261,7 +267,13 @@ public class UIKitViewController: UIViewController {
         airHUDView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(airHUDView)
         
-        airHUDView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        NSLayoutConstraint.activate([
+            airHUDView.topAnchor.constraint(equalTo: view.topAnchor),
+            airHUDView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            airHUDView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            airHUDView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        ])
+        
         self.addChild(airHUDHostingController)
         airHUDHostingController.didMove(toParent: self)
     }
@@ -290,15 +302,21 @@ public class UIKitViewController: UIViewController {
         airHUDView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(airHUDView)
         
-        airHUDView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        NSLayoutConstraint.activate([
+            airHUDView.topAnchor.constraint(equalTo: view.topAnchor),
+            airHUDView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            airHUDView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            airHUDView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        ])
+        
         self.addChild(airHUDHostingController)
         airHUDHostingController.didMove(toParent: self)
     }
     
     func setupAirHUDCustomized() {
-        cancellable = stateCustomized.$isPresented.sink { value in // weak self here
-            print(value)
-        }
+//        cancellable = stateCustomized.$isPresented.sink { value in // weak self here
+//            print(value)
+//        }
         
         let customizedConfiguration = AirHUDConfiguration(mode: .iconTitleAndSubtitle(
             icon: IconConfiguration(
@@ -342,7 +360,13 @@ public class UIKitViewController: UIViewController {
         airHUDView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(airHUDView)
         
-        airHUDView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        NSLayoutConstraint.activate([
+            airHUDView.topAnchor.constraint(equalTo: view.topAnchor),
+            airHUDView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            airHUDView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            airHUDView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        ])
+        
         self.addChild(airHUDHostingController)
         airHUDHostingController.didMove(toParent: self)
     }
