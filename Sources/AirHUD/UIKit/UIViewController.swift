@@ -52,17 +52,17 @@ public class UIKitViewController: UIViewController {
         )
     }
     
+    deinit {
+        cancellableIconAndTitle?.cancel()
+        cancellableIconTitleAndButton?.cancel()
+        cancellableIconTitleAndSubtitle?.cancel()
+        cancellableCustomized?.cancel()
+    }
+    
     public required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override public  func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .white
-        setupButtonsUI()
-        setupAirHUDStates()
-    }
-        
     func setupButtonsUI() {
         let stateIconAndTitleButton = UIButton(frame: .zero)
         stateIconAndTitleButton.setTitle("Icon and Title", for: .normal)
@@ -100,13 +100,7 @@ public class UIKitViewController: UIViewController {
             view.trailingAnchor.constraint(greaterThanOrEqualTo: stackView.trailingAnchor, constant: 20)
         ])
     }
-    func setupAirHUDStates() {
-        setupAirHUDIconAndTitle()
-        setupAirHUDIconTitleAndButton()
-        setupAirHUDIconTitleAndSubtitle()
-        setupAirHUDCustomized()
-    }
-
+    
     @objc func didTapButtonStateIconAndTitle() {
         stateIconAndTitle.isPresented = true
     }
@@ -123,122 +117,151 @@ public class UIKitViewController: UIViewController {
         stateCustomized.isPresented = true
     }
     
-    func setupAirHUDIconAndTitle() {
-    
-        cancellableIconAndTitle = stateIconAndTitle.$isPresented.sink { value in // weak self here
-            print("Icon and title is \(value)")
-        }
+    override public func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .white
+        setupButtonsUI()
+        setupAirHUDStates()
+    }
         
+    func setupAirHUDStates() {
+        setupAirHUDIconAndTitle()
+        setupAirHUDIconTitleAndButton()
+        setupAirHUDIconTitleAndSubtitle()
+        setupAirHUDCustomized()
+    }
+    
+    func setupAirHUD(
+        state: AirHUDIKitState,
+        hudType: HUDType,
+        hudView: UIView?,
+        viewController: UIViewController
+    ) {
+    
         let airHUDHostingController = UIHostingController(
-            rootView: AirHUDContainer(
-                state: stateIconAndTitle,
-                hudType: .iconAndTitle(
-                    Image(systemName: "doc.on.doc"),
-                    .blue,
-                    "Text Copied"
-                )
+            rootView: createAirHUDContainer(
+                state: state,
+                hudType: hudType
             )
         )
         
-        guard let airHUDView = airHUDHostingController.view else {
-            return
-        }
+        guard let airHUDView = airHUDHostingController.view else { return }
         
-        hudView = airHUDView
-        
-        if let hudView = hudView {
+        configureHUDView(airHUDView)
+        animateHUDView(
+            hudView: airHUDView,
+            state: state
+        )
+        constrainHUDView(hudView: airHUDView, viewController: viewController)
+    }
+
+    func createAirHUDContainer(
+        state: AirHUDIKitState,
+        hudType: HUDType
+    ) -> AirHUDContainer {
+         AirHUDContainer(
+            state: state,
+            hudType: hudType
+        )
+    }
+
+    func configureHUDView(_ airHUDView: UIView) {
+        airHUDView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(airHUDView)
+    }
+
+    func animateHUDView(hudView: UIView?, state: AirHUDIKitState) {
+        state.cancellable?.cancel()
+        state.cancellable = state.$isPresented.sink { [weak self] value in
+            let YOffset: CGFloat = -20
+            let transform: CGAffineTransform = value ? .identity : CGAffineTransform(translationX: 0, y: -YOffset)
             
-            hudView.translatesAutoresizingMaskIntoConstraints = false
-            view.addSubview(hudView)
-            
-            NSLayoutConstraint.activate([
-                hudView.topAnchor.constraint(equalTo: view.topAnchor),
-                hudView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-                hudView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-                hudView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
-            ])
-            
-            self.addChild(airHUDHostingController)
-            airHUDHostingController.didMove(toParent: self)
+            DispatchQueue.main.async { [weak self] in
+                self?.animateTransform(transform, hudView: hudView)
+            }
         }
+    }
+
+    func animateTransform(_ transform: CGAffineTransform, hudView: UIView?) {
+        UIView.animate(
+            withDuration: 1.5,
+            delay: 0,
+            usingSpringWithDamping: 0.7,
+            initialSpringVelocity: 0.6,
+            options: [.curveEaseInOut],
+            animations: {
+                hudView?.transform = transform
+            },
+            completion: { [weak self] _ in
+                self?.animateFinalTransform(hudView)
+            }
+        )
+    }
+
+    func animateFinalTransform(_ hudView: UIView?) {
+        UIView.animate(
+            withDuration: 1.0,
+            delay: 1,
+            usingSpringWithDamping: 0.5,
+            initialSpringVelocity: 0.5,
+            options: [.curveEaseInOut],
+            animations: {
+                hudView?.transform = CGAffineTransform(translationX: 0, y: -200)
+            },
+            completion: nil
+        )
+    }
+
+    func constrainHUDView(hudView: UIView?, viewController: UIViewController) {
+        hudView?.topAnchor.constraint(equalTo: viewController.view.topAnchor).isActive = true
+        hudView?.centerXAnchor.constraint(equalTo: viewController.view.centerXAnchor).isActive = true
+        hudView?.leadingAnchor.constraint(equalTo: viewController.view.leadingAnchor).isActive = true
+        hudView?.trailingAnchor.constraint(equalTo: viewController.view.trailingAnchor).isActive = true
+    }
+
+    func setupAirHUDIconAndTitle() {
+        setupAirHUD(
+            state: stateIconAndTitle,
+            hudType: .iconAndTitle(
+                Image(systemName: "doc.on.doc"),
+                .blue,
+                "Text Copied"
+            ),
+            hudView: hudView,
+            viewController: self
+        )
     }
     
     func setupAirHUDIconTitleAndButton() {
-        cancellableIconTitleAndButton = stateIconTitleAndButton.$isPresented.sink { value in // weak self here
-            print(value)
-        }
-        
-        let airHUDHostingController = UIHostingController(
-            rootView: AirHUDContainer(
-                state: stateIconTitleAndButton,
-                hudType: .iconTitleAndButton(
-                    Image(systemName: "trash"),
-                    .blue,
-                    "Conversation Deleted",
-                    "Undo",
-                    nil
-                )
-            )
+        setupAirHUD(
+            state: stateIconTitleAndButton,
+            hudType: .iconTitleAndButton(
+                Image(systemName: "trash"),
+                .blue,
+                "Conversation Deleted",
+                "Undo",
+                nil
+            ),
+            hudView: hudView,
+            viewController: self
         )
-        
-        guard let airHUDView = airHUDHostingController.view else {
-            return
-        }
-        
-        airHUDView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(airHUDView)
-        
-        NSLayoutConstraint.activate([
-            airHUDView.topAnchor.constraint(equalTo: view.topAnchor),
-            airHUDView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            airHUDView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            airHUDView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
-        ])
-        
-        self.addChild(airHUDHostingController)
-        airHUDHostingController.didMove(toParent: self)
     }
-
+    
     func setupAirHUDIconTitleAndSubtitle() {
-        cancellableIconTitleAndSubtitle = stateIconTitleAndSubtitle.$isPresented.sink { value in // weak self here
-            print(value)
-        }
-        
-        let airHUDHostingController = UIHostingController(
-            rootView: AirHUDContainer(
-                state: stateIconTitleAndSubtitle,
-                hudType: .iconTitleAndSubtitle(
-                    Image(systemName: "folder"),
-                    .blue,
-                    "Moved",
-                    "File moved to \"Personal\""
-                )
-            )
+        setupAirHUD(
+            state: stateIconTitleAndSubtitle,
+            hudType: .iconTitleAndSubtitle(
+                Image(systemName: "folder"),
+                .blue,
+                "Moved",
+                "File moved to \"Personal\""
+            ),
+            hudView: hudView,
+            viewController: self
         )
-        
-        guard let airHUDView = airHUDHostingController.view else {
-            return
-        }
-        
-        airHUDView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(airHUDView)
-        
-        NSLayoutConstraint.activate([
-            airHUDView.topAnchor.constraint(equalTo: view.topAnchor),
-            airHUDView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            airHUDView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            airHUDView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
-        ])
-        
-        self.addChild(airHUDHostingController)
-        airHUDHostingController.didMove(toParent: self)
     }
     
     func setupAirHUDCustomized() {
-        cancellableCustomized = stateCustomized.$isPresented.sink { value in // weak self here
-            print(value)
-        }
-        
         let customizedConfiguration = AirHUDConfiguration(mode: .iconTitleAndSubtitle(
             icon: IconConfiguration(
                 image: .init(systemName: "star"),
@@ -266,30 +289,13 @@ public class UIKitViewController: UIViewController {
             )
         )
         )
-
-        let airHUDHostingController = UIHostingController(
-            rootView: AirHUDContainer(
-                state: stateCustomized,
-                hudType: .configuration(customizedConfiguration)
-            )
+        
+        setupAirHUD(
+            state: stateCustomized,
+            hudType: .configuration(customizedConfiguration),
+            hudView: hudView,
+            viewController: self
         )
-        
-        guard let airHUDView = airHUDHostingController.view else {
-            return
-        }
-        
-        airHUDView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(airHUDView)
-        
-        NSLayoutConstraint.activate([
-            airHUDView.topAnchor.constraint(equalTo: view.topAnchor),
-            airHUDView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            airHUDView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            airHUDView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
-        ])
-        
-        self.addChild(airHUDHostingController)
-        airHUDHostingController.didMove(toParent: self)
     }
 }
 

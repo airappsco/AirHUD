@@ -14,24 +14,33 @@ import UIKit
 public class AirHUDIKitState: ObservableObject {
     
     @Published public var isPresented: Bool
+    public var cancellable: AnyCancellable?
     
     public init(isPresented: Bool = false) {
         self.isPresented = isPresented
     }
     
-    public init() {
-        self.isPresented = false
+    public func updateCancellable(cancellable: AnyCancellable?) {
+        self.cancellable?.cancel()
+        self.cancellable = cancellable
+    }
+
+    public func cancel() {
+        cancellable?.cancel()
+        cancellable = nil
     }
 }
 
 @available(iOS 13.0, *)
+public enum HUDType {
+    case configuration(AirHUDConfiguration)
+    case iconAndTitle(Image, Color, String)
+    case iconTitleAndButton(Image, Color, String, String, (() -> Void)?)
+    case iconTitleAndSubtitle(Image, Color, String, String)
+}
+
+@available(iOS 13.0, *)
 public struct AirHUDContainer: View {
-    public enum HUDType {
-        case configuration(AirHUDConfiguration)
-        case iconAndTitle(Image, Color, String)
-        case iconTitleAndButton(Image, Color, String, String, (() -> Void)?)
-        case iconTitleAndSubtitle(Image, Color, String, String)
-    }
     
     @ObservedObject var state: AirHUDIKitState
     public var hudType: HUDType
