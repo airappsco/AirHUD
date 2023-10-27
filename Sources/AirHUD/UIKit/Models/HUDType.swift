@@ -1,8 +1,9 @@
 //
-//  File.swift
-//  
+//  HUDType.swift
+//  AirHUD
 //
-//  Created by Christian on 27/10/23.
+//  Created by Christian Skorobogatow on 27/10/23.
+//  Copyright © 2023 AirApps. All rights reserved.
 //
 
 import SwiftUI

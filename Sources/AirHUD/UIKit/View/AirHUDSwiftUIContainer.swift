@@ -1,5 +1,5 @@
 //
-//  AirHUDWrapper.swift
+//  AirHUDSwiftUIContainer.swift
 //  AirHUD
 //
 //  Created by Christian Skorobogatow on 24/10/23.
@@ -11,7 +11,7 @@ import SwiftUI
 import UIKit
 
 @available(iOS 13.0, *)
-struct AirHUDContainer: View {
+struct AirHUDSwiftUIContainer: View {
     
     @ObservedObject var state: HUDStateManagerUIKit
     var hudType: HUDType

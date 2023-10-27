@@ -1,15 +1,17 @@
 //
-//  File 2.swift
-//  
+//  HUDStateStore.swift
+//  AirHUD
 //
-//  Created by Christian on 27/10/23.
+//  Created by Christian Skorobogatow on 27/10/23.
+//  Copyright © 2023 AirApps. All rights reserved.
 //
+
 
 import Combine
 import UIKit
 
 @available(iOS 13.0, *)
-class HUDStateManagerUIKitManager {
+class HUDStateStore {
     var stateManagers: [String: HUDStateManagerUIKit] = [:]
     
     // Access stateManager by ID

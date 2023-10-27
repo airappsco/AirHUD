@@ -13,7 +13,7 @@ import UIKit
 @available(iOS 13.0, *)
 public class AirHUDUIKitProvider {
     
-    private var hudStateManagerManager = HUDStateManagerUIKitManager()
+    private var hudStateManagerManager = HUDStateStore()
     
     public init() { }
     
@@ -41,20 +41,24 @@ public class AirHUDUIKitProvider {
     }
     
     public func toggleAirHUD(hudID: String) {
-            // Access the state manager for the given ID
-            guard let stateManager = hudStateManagerManager.stateManagerForID(hudID) else {
-                print("No AirHUD associated with the given ID")
-                return
-            }
-
-            stateManager.isPresented.toggle()
+        guard let stateManager = hudStateManagerManager.stateManagerForID(hudID) else {
+            debugPrint("No AirHUD associated with the given ID")
+            return
         }
+        
+        stateManager.isPresented.toggle()
+    }
+}
+
+
+@available(iOS 13.0, *)
+extension AirHUDUIKitProvider {
     
      private func createAirHUDContainer(
         state: HUDStateManagerUIKit,
         hudType: HUDType
-    ) -> AirHUDContainer {
-        AirHUDContainer(
+    ) -> AirHUDSwiftUIContainer {
+        AirHUDSwiftUIContainer(
             state: state,
             hudType: hudType
         )
