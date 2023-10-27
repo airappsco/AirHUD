@@ -21,72 +21,70 @@ struct AirHUDSwiftUIContainer: View {
         self.hudType = hudType
     }
     
-    func toHudView() -> some View {
-        ZStack {
-            switch self.hudType {
-            case .configuration(
-                let configuration
-            ):
-                Color.clear
-                    .airHud(
-                        isPresented: $state.isPresented,
-                        configuration: configuration
-                    )
-                
-            case .iconAndTitle(
-                let iconImage,
-                let iconColor,
-                let title
-            ):
-                Color.clear
-                    .airHud(
-                        isPresented: $state.isPresented,
-                        iconImage: iconImage,
-                        iconColor: iconColor,
-                        title: title
-                    )
-                    .animation(.spring())
-                
-            case .iconTitleAndButton(
-                let iconImage,
-                let iconColor,
-                let title,
-                let buttonTitle,
-                let buttonAction
-            ):
-                Color.clear
-                    .airHud(
-                        isPresented: $state.isPresented,
-                        iconImage: iconImage,
-                        iconColor: iconColor,
-                        title: title,
-                        buttonTitle: buttonTitle,
-                        buttonAction: buttonAction
-                    )
-                
-            case .iconTitleAndSubtitle(
-                let iconImage,
-                let iconColor,
-                let title,
-                let subtitle
-            ):
-                Color.clear
-                    .airHud(
-                        isPresented: $state.isPresented,
-                        iconImage: iconImage,
-                        iconColor: iconColor,
-                        title: title,
-                        subtitle: subtitle
-                    )
-            }
-        }
-    }
-    
     var body: some View {
         if state.isPresented {
             toHudView()
         } else {
             EmptyView()
         }
+    }
+    
+    @ViewBuilder
+    func toHudView() -> some View {
+        switch self.hudType {
+        case .configuration(let configuration):
+            Color.clear
+                .airHud(
+                    isPresented: $state.isPresented,
+                    configuration: configuration,
+                    showAnimationSpeed: UIKitAnimationTiming.showAnimationSpeed,
+                    hideAnimationSpeed: UIKitAnimationTiming.hideAnimationSpeed
+                )
+            
+        case .iconAndTitle(let iconImage, let iconColor, let title):
+            Color.clear
+                .airHud(
+                    isPresented: $state.isPresented,
+                    iconImage: iconImage,
+                    iconColor: iconColor,
+                    title: title,
+                    showAnimationSpeed: UIKitAnimationTiming.showAnimationSpeed,
+                    hideAnimationSpeed: UIKitAnimationTiming.hideAnimationSpeed
+                )
+            
+        case .iconTitleAndButton(let iconImage, let iconColor, let title, let buttonTitle, let buttonAction):
+            
+            Color.clear
+                .airHud(
+                    isPresented: $state.isPresented,
+                    iconImage: iconImage,
+                    iconColor: iconColor,
+                    title: title,
+                    buttonTitle: buttonTitle,
+                    showAnimationSpeed: UIKitAnimationTiming.showAnimationSpeed,
+                    hideAnimationSpeed: UIKitAnimationTiming.hideAnimationSpeed,
+                    buttonAction: buttonAction
+                )
+            
+        case .iconTitleAndSubtitle( let iconImage, let iconColor, let title, let subtitle):
+            Color.clear
+                .airHud(
+                    isPresented: $state.isPresented,
+                    iconImage: iconImage,
+                    iconColor: iconColor,
+                    title: title,
+                    subtitle: subtitle,
+                    showAnimationSpeed: UIKitAnimationTiming.showAnimationSpeed,
+                    hideAnimationSpeed: UIKitAnimationTiming.hideAnimationSpeed
+                )
+        }
+    }
+}
+
+@available(iOS 13.0, *)
+private extension AirHUDSwiftUIContainer {
+     enum UIKitAnimationTiming {
+        static let showAnimationSpeed = 3.0
+        static let hideAnimationSpeed = 1.4
     }
 }

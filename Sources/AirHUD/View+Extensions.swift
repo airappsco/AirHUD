@@ -17,9 +17,11 @@ public extension View {
     /// - Returns: View instance that contains AirHUD as top item according to Z-axis
     func airHud(
         isPresented: Binding<Bool>,
-        configuration: AirHUDConfiguration
+        configuration: AirHUDConfiguration,
+        showAnimationSpeed: Double? = nil,
+        hideAnimationSpeed: Double? = nil
     ) -> some View {
-        modifier(AirHUDViewModifier(isPresented: isPresented, configuration: configuration))
+        modifier(AirHUDViewModifier(isPresented: isPresented, configuration: configuration, showAnimationSpeed: showAnimationSpeed, hideAnimationSpeed: hideAnimationSpeed))
     }
     
     /// Populates AirHUD with icon-title appearance and it uses default visual configurations. It can be preferred for quick and easy use.
@@ -33,12 +35,14 @@ public extension View {
         isPresented: Binding<Bool>,
         iconImage: Image,
         iconColor: Color,
-        title: String
+        title: String,
+        showAnimationSpeed: Double? = nil,
+        hideAnimationSpeed: Double? = nil
     ) -> some View {
         let mode: AirHUDMode = .iconAndTitle(icon: .init(image: iconImage, color: iconColor),
                                              title: .init(text: title))
         let configuration: AirHUDConfiguration = .init(mode: mode)
-        return modifier(AirHUDViewModifier(isPresented: isPresented, configuration: configuration))
+        return modifier(AirHUDViewModifier(isPresented: isPresented, configuration: configuration, showAnimationSpeed: showAnimationSpeed, hideAnimationSpeed: hideAnimationSpeed ))
     }
     
     /// Populates AirHUD with icon-title-button appearance and it uses default visual configurations. It can be preferred for quick and easy use.
@@ -56,6 +60,8 @@ public extension View {
         iconColor: Color,
         title: String,
         buttonTitle: String,
+        showAnimationSpeed: Double? = nil,
+        hideAnimationSpeed: Double? = nil,
         buttonAction: (() -> Void)? = nil
     ) -> some View {
         let mode: AirHUDMode = .iconTitleAndButton(icon: .init(image: iconImage, color: iconColor),
@@ -63,7 +69,7 @@ public extension View {
                                                    button: .init(text: buttonTitle, didTap: buttonAction),
                                                    general: .init(horizontalAlingment: .leading))
         let configuration: AirHUDConfiguration = .init(mode: mode)
-        return modifier(AirHUDViewModifier(isPresented: isPresented, configuration: configuration))
+        return modifier(AirHUDViewModifier(isPresented: isPresented, configuration: configuration, showAnimationSpeed: showAnimationSpeed, hideAnimationSpeed: hideAnimationSpeed))
     }
     
     /// Populates AirHUD with icon-title-subtitle appearance and it uses default visual configurations. It can be preferred for quick and easy use.
@@ -79,13 +85,15 @@ public extension View {
         iconImage: Image,
         iconColor: Color,
         title: String,
-        subtitle: String
+        subtitle: String,
+        showAnimationSpeed: Double? = nil,
+        hideAnimationSpeed: Double? = nil
     ) -> some View {
         let mode: AirHUDMode = .iconTitleAndSubtitle(icon: .init(image: iconImage, color: iconColor),
                                                      title: .init(text: title),
                                                      subtitle: .init(text: subtitle),
                                                      general: .init(horizontalAlingment: .leading))
         let configuration: AirHUDConfiguration = .init(mode: mode)
-        return modifier(AirHUDViewModifier(isPresented: isPresented, configuration: configuration))
+        return modifier(AirHUDViewModifier(isPresented: isPresented, configuration: configuration, showAnimationSpeed: showAnimationSpeed, hideAnimationSpeed: hideAnimationSpeed))
     }
 }

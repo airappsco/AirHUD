@@ -14,11 +14,21 @@ struct AirHUDViewModifier: ViewModifier {
     @Binding var isPresented: Bool
     let configuration: AirHUDConfiguration
     let viewModel: AirHUDViewModel
+    let showAnimationSpeed: Double
+    let hideAnimationSpeed: Double
     
-    init(isPresented: Binding<Bool>, configuration: AirHUDConfiguration) {
+    init(
+        isPresented: Binding<Bool>,
+        configuration: AirHUDConfiguration,
+        showAnimationSpeed: Double? = nil,
+        hideAnimationSpeed: Double? = nil
+    ) {
         self._isPresented = isPresented
         self.configuration = configuration
         self.viewModel = .init(isPresented: isPresented, configuration: configuration)
+        
+        self.showAnimationSpeed = showAnimationSpeed ?? Constant.defaultShowAnimationSpeed
+        self.hideAnimationSpeed = hideAnimationSpeed ?? Constant.defaultHideAnimationSpeed
     }
     
     func body(content: Content) -> some View {
@@ -34,12 +44,12 @@ struct AirHUDViewModifier: ViewModifier {
             }
         }
         .animation(
-            .spring().speed(isPresented ? Constant.showAnimationSpeed : Constant.hideAnimationSpeed),
+            .spring().speed(isPresented ? showAnimationSpeed : hideAnimationSpeed),
             value: isPresented)
     }
 }
 
-private enum Constant {
-    static let showAnimationSpeed = 1.0
-    static let hideAnimationSpeed = 0.4
+private struct Constant {
+    static let defaultShowAnimationSpeed = 1.0
+    static let defaultHideAnimationSpeed = 0.4
 }
