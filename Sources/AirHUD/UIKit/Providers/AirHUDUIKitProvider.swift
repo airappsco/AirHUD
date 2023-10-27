@@ -23,6 +23,7 @@ public class AirHUDUIKitProvider {
         in viewController: UIViewController
     ) {
         let state = hudStateManagerManager.createStateManagerForID(hudID)
+        state.viewController = viewController
         
         let airHUDHostingController = UIHostingController(
             rootView: createAirHUDContainer(
@@ -30,14 +31,13 @@ public class AirHUDUIKitProvider {
                 hudType: hudType
             )
         )
+        airHUDHostingController.view.backgroundColor = .clear
         
         guard let airHUDView = airHUDHostingController.view else { return }
-        
         state.hudView = airHUDView
         
         configureHUDView(airHUDView, in: viewController)
-        animateHUDView(hudView: airHUDView, state: state)
-        constrainHUDView(hudView: airHUDView, viewController: viewController)
+        animateHUDView(hudView: airHUDView, state: state, viewController: viewController)
     }
     
     public func toggleAirHUD(hudID: String) {
@@ -69,17 +69,39 @@ extension AirHUDUIKitProvider {
         viewController.view.addSubview(airHUDView)
     }
     
-    private func animateHUDView(hudView: UIView?, state: HUDStateManagerUIKit) {
+    private func animateHUDView(hudView: UIView?, state: HUDStateManagerUIKit, viewController: UIViewController) {
+            
         state.cancellable?.cancel()
         state.cancellable = state.$isPresented.sink { [weak self] value in
             let YOffset: CGFloat = -20
             let transform: CGAffineTransform = value ? .identity : CGAffineTransform(translationX: 0, y: -YOffset)
-            
+                
             DispatchQueue.main.async { [weak self] in
-                self?.animateTransform(transform, hudView: hudView)
+                guard let self = self else { return }
+                
+                if value {
+
+                    guard let hudView = hudView else { return }
+                    
+                    viewController.view.addSubview(hudView)
+
+                    hudView.translatesAutoresizingMaskIntoConstraints = false
+                    
+                    NSLayoutConstraint.activate([
+                        hudView.topAnchor.constraint(equalTo: viewController.view.topAnchor),
+                        hudView.centerXAnchor.constraint(equalTo: viewController.view.centerXAnchor),
+                        hudView.leadingAnchor.constraint(equalTo: viewController.view.leadingAnchor),
+                        hudView.trailingAnchor.constraint(equalTo: viewController.view.trailingAnchor)
+                    ])
+                    
+                } else {
+                    hudView?.removeFromSuperview()
+                }
+                self.animateTransform(transform, hudView: hudView)
             }
         }
     }
+
     
     private func animateTransform(_ transform: CGAffineTransform, hudView: UIView?) {
         UIView.animate(
@@ -109,12 +131,5 @@ extension AirHUDUIKitProvider {
             },
             completion: nil
         )
-    }
-    
-    private func constrainHUDView(hudView: UIView?, viewController: UIViewController) {
-        hudView?.topAnchor.constraint(equalTo: viewController.view.topAnchor).isActive = true
-        hudView?.centerXAnchor.constraint(equalTo: viewController.view.centerXAnchor).isActive = true
-        hudView?.leadingAnchor.constraint(equalTo: viewController.view.leadingAnchor).isActive = true
-        hudView?.trailingAnchor.constraint(equalTo: viewController.view.trailingAnchor).isActive = true
     }
 }

@@ -15,6 +15,8 @@ class HUDStateManagerUIKit: ObservableObject {
     @Published var isPresented: Bool
     
     weak var hudView: UIView?
+    weak var viewController: UIViewController?
+    
     var cancellable: AnyCancellable?
     
     init(isPresented: Bool = false) {
