@@ -1,16 +1,14 @@
 //
-//  UIViewController.swift
-//  Example
+//  AirHUDUIKitProvider.swift
+//  AirHUD
 //
-//  Created by Christian on 26/10/23.
+//  Created by Christian Skorobogatow on 24/10/23.
+//  Copyright © 2023 AirApps. All rights reserved.
 //
 
 import AirHUD
 import SwiftUI
 import UIKit
-
-
-// MARK: This is for development purposes and will be moved into Example project later on
 
 @available(iOS 13.0, *)
 public class UIKitViewController: UIViewController {

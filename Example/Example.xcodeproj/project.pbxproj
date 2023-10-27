@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		AA521FEF2AEAB99F00985F50 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA521FEE2AEAB99F00985F50 /* UIViewController.swift */; };
-		AAF14BFE2AEBAE6900DB1ED7 /* UIViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF14BFD2AEBAE6900DB1ED7 /* UIViewRepresentable.swift */; };
+		AAF14BFE2AEBAE6900DB1ED7 /* ViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF14BFD2AEBAE6900DB1ED7 /* ViewControllerRepresentable.swift */; };
 		E103D3822A8E75790009145E /* AirHUD in Frameworks */ = {isa = PBXBuildFile; productRef = E103D3812A8E75790009145E /* AirHUD */; };
 		E1F8E46E2A8B67B3007892F2 /* ExampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F8E46D2A8B67B3007892F2 /* ExampleApp.swift */; };
 		E1F8E4722A8B67B4007892F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1F8E4712A8B67B4007892F2 /* Assets.xcassets */; };
@@ -18,7 +18,7 @@
 
 /* Begin PBXFileReference section */
 		AA521FEE2AEAB99F00985F50 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
-		AAF14BFD2AEBAE6900DB1ED7 /* UIViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewRepresentable.swift; sourceTree = "<group>"; };
+		AAF14BFD2AEBAE6900DB1ED7 /* ViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerRepresentable.swift; sourceTree = "<group>"; };
 		E103D3802A8E75170009145E /* AirHUD */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = AirHUD; path = ..; sourceTree = "<group>"; };
 		E1DC37902A8E722000C9B054 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		E1F8E46A2A8B67B3007892F2 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -45,7 +45,7 @@
 			isa = PBXGroup;
 			children = (
 				AA521FEE2AEAB99F00985F50 /* UIViewController.swift */,
-				AAF14BFD2AEBAE6900DB1ED7 /* UIViewRepresentable.swift */,
+				AAF14BFD2AEBAE6900DB1ED7 /* ViewControllerRepresentable.swift */,
 			);
 			path = UIViewController;
 			sourceTree = "<group>";
@@ -201,7 +201,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1F8E49E2A8B9B21007892F2 /* ContentView.swift in Sources */,
-				AAF14BFE2AEBAE6900DB1ED7 /* UIViewRepresentable.swift in Sources */,
+				AAF14BFE2AEBAE6900DB1ED7 /* ViewControllerRepresentable.swift in Sources */,
 				E1F8E46E2A8B67B3007892F2 /* ExampleApp.swift in Sources */,
 				AA521FEF2AEAB99F00985F50 /* UIViewController.swift in Sources */,
 			);
