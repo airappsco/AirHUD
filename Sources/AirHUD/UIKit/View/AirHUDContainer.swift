@@ -11,46 +11,17 @@ import SwiftUI
 import UIKit
 
 @available(iOS 13.0, *)
-public class AirHUDIKitState: ObservableObject {
+struct AirHUDContainer: View {
     
-    @Published public var isPresented: Bool
-    public var cancellable: AnyCancellable?
+    @ObservedObject var state: HUDStateManagerUIKit
+    var hudType: HUDType
     
-    public init(isPresented: Bool = false) {
-        self.isPresented = isPresented
-    }
-    
-    public func updateCancellable(cancellable: AnyCancellable?) {
-        self.cancellable?.cancel()
-        self.cancellable = cancellable
-    }
-
-    public func cancel() {
-        cancellable?.cancel()
-        cancellable = nil
-    }
-}
-
-@available(iOS 13.0, *)
-public enum HUDType {
-    case configuration(AirHUDConfiguration)
-    case iconAndTitle(Image, Color, String)
-    case iconTitleAndButton(Image, Color, String, String, (() -> Void)?)
-    case iconTitleAndSubtitle(Image, Color, String, String)
-}
-
-@available(iOS 13.0, *)
-public struct AirHUDContainer: View {
-    
-    @ObservedObject var state: AirHUDIKitState
-    public var hudType: HUDType
-    
-    public init(state: AirHUDIKitState, hudType: HUDType) {
+    init(state: HUDStateManagerUIKit, hudType: HUDType) {
         self.state = state
         self.hudType = hudType
     }
     
-    public func toHudView() -> some View {
+    func toHudView() -> some View {
         ZStack {
             switch self.hudType {
             case .configuration(
@@ -111,7 +82,7 @@ public struct AirHUDContainer: View {
         }
     }
     
-    public var body: some View {
+    var body: some View {
         if state.isPresented {
             toHudView()
         } else {
