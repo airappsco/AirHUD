@@ -49,7 +49,7 @@ struct AirHUDViewModifier: ViewModifier {
     }
 }
 
-private struct Constant {
+private enum Constant {
     static let defaultShowAnimationSpeed = 1.0
     static let defaultHideAnimationSpeed = 0.4
 }
