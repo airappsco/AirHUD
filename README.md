@@ -1,5 +1,5 @@
 ![Static Badge](https://img.shields.io/badge/license-MIT-lightgray)
-![Static Badge](https://img.shields.io/badge/iOS-15.0+-blue.svg)
+![Static Badge](https://img.shields.io/badge/iOS-12.0+-blue.svg)
 ![Static Badge](https://img.shields.io/badge/SPM-compatible-brightgreen)
 
 ![AirHUD_Project Banner_Github 2](https://github.com/airappsco/AirHUD/assets/104971436/d838c0df-60ba-4def-baef-b25239a28eaa)
@@ -15,6 +15,11 @@ HUD component written using SwiftUI for **iOS 15** and later
 - Dynamic Type support 🔠
 - Compatible with Dark Mode by default 🌙
 - Swift Package Manager support 📦
+
+## 📋  Requirements
+- iOS 12 ((if you use only UIKit)
+- iOS 15.0+ (if you use it in SwiftUI)
+- Swift 5.8+ (Xcode 14.3+).
 
 ## 🔧 Installation
 AirHUD is distributed via **Swift Package Manager** 📦. 
