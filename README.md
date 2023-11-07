@@ -1,5 +1,5 @@
 ![Static Badge](https://img.shields.io/badge/license-MIT-lightgray)
-![Static Badge](https://img.shields.io/badge/iOS-15.0+-blue.svg)
+![Static Badge](https://img.shields.io/badge/iOS-12.0+-blue.svg)
 ![Static Badge](https://img.shields.io/badge/SPM-compatible-brightgreen)
 
 ![AirHUD_Project Banner_Github 2](https://github.com/airappsco/AirHUD/assets/104971436/d838c0df-60ba-4def-baef-b25239a28eaa)
@@ -15,6 +15,11 @@ HUD component written using SwiftUI for **iOS 15** and later
 - Dynamic Type support 🔠
 - Compatible with Dark Mode by default 🌙
 - Swift Package Manager support 📦
+
+## 📋  Requirements
+- iOS 12 ((if you use only UIKit)
+- iOS 15.0+ (if you use it in SwiftUI)
+- Swift 5.8+ (Xcode 14.3+).
 
 ## 🔧 Installation
 AirHUD is distributed via **Swift Package Manager** 📦. 
@@ -126,7 +131,62 @@ There are 4 different `airHUD` functions. 3 of them provides ease of use for 3 d
                 configuration: hudConfiguration)
 ```
 
-You can also check the **[Example project](Example)** for usage.
+### 🏗️ Using AirHUD with UIKit
+
+AirHUD also supports UIKit using a wrapper, though the underlying views utilize SwiftUI. You can achieve the same 4 configurations as presented above. However, due to the dependency on SwiftUI, the setup process slightly differs.
+
+> **Note:** To use AirHUD with UIKit, you will need to switch to the `feature/ios-12-support` branch.
+
+The steps to use AirHUD with UIKit are as follows:
+
+1. **Import the AirHUD module.** Initiate AirHUDUIKitProvider in the file where it's needed.
+
+```swift
+import AirHUD
+private let hudProvider = AirHUDUIKitProvider()
+```
+
+2. **Set up the type of HUD that suits your requirement.** 
+
+For this, you need to provide an ID of type `String` and the target `UIViewController` where the HUD should be displayed. 
+
+```swift
+override public func viewDidLoad() {
+    super.viewDidLoad()
+    setupIconAndTitleHUD()
+}
+```
+
+Here is an example setup of an `IconAndTitle` HUD:
+
+```swift
+@objc func setupIconAndTitleHUD() {
+    hudProvider.setupAirHUD(
+        hudID: "1",
+        hudType: .iconAndTitle(
+            Image(systemName: "doc.on.doc"),
+            .blue,
+            "Text Copied"
+        ),
+        in: self
+    )
+}
+```
+
+3. **Present the HUD.** 
+
+This can be executed from your trigger function by providing the HUD's ID:
+
+```swift
+@objc func didTapButtonStateIconAndTitle() {
+    hudProvider.toggleAirHUD(hudID: "1")
+}
+```
+
+You can check out the **[Example project](Example)** in the workspace for both SwiftUI and UIKit's detailed usage.
+
+## Validation
+This framework has been validated and tested through integration into our app [Translate Now](https://apps.apple.com/us/app/translate-now-translator/id1348028646).
 
 ## Contributing to Air Apps
 Want to contribute to **Air Apps**? Please refer to the following guide [here](./CONTRIBUTING.md).
