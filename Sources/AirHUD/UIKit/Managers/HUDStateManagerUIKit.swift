@@ -16,10 +16,15 @@ class HUDStateManagerUIKit: ObservableObject {
     
     weak var hudView: UIView?
     weak var viewController: UIViewController?
+    var analytics: AirHUDAnalyticsBridge?
     
     var cancellable: AnyCancellable?
     
-    init(isPresented: Bool = false) {
+    init(
+        isPresented: Bool = false,
+        analytics: AirHUDAnalyticsBridge?
+    ) {
+        self.analytics = analytics
         self.isPresented = isPresented
     }
     

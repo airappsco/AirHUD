@@ -14,8 +14,13 @@ import UIKit
 public class AirHUDUIKitProvider {
     
     private var hudStateManagerManager = HUDStateStore()
+    public var analytics: AirHUDAnalyticsBridge?
     
-    public init() { }
+    public init(
+        analytics: AirHUDAnalyticsBridge? = nil
+    ) {
+        self.analytics = analytics
+    }
     
     public func setupAirHUD(
         hudID: String,
@@ -24,6 +29,7 @@ public class AirHUDUIKitProvider {
     ) {
         let state = hudStateManagerManager.createStateManagerForID(hudID)
         state.viewController = viewController
+        state.analytics = analytics
         
         let airHUDHostingController = UIHostingController(
             rootView: createAirHUDContainer(

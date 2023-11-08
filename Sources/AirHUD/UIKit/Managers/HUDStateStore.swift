@@ -13,6 +13,7 @@ import UIKit
 @available(iOS 13.0, *)
 class HUDStateStore {
     var stateManagers: [String: HUDStateManagerUIKit] = [:]
+    var analytics: AirHUDAnalyticsBridge?
     
     // Access stateManager by ID
     func stateManagerForID(
@@ -27,7 +28,8 @@ class HUDStateStore {
         isPresented: Bool = false
     ) -> HUDStateManagerUIKit {
         let stateManager = HUDStateManagerUIKit(
-            isPresented: isPresented
+            isPresented: isPresented,
+            analytics: analytics
         )
         stateManagers[id] = stateManager
         return stateManager

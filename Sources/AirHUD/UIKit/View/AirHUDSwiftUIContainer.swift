@@ -38,7 +38,8 @@ struct AirHUDSwiftUIContainer: View {
                     isPresented: $state.isPresented,
                     configuration: configuration,
                     showAnimationSpeed: UIKitAnimationTiming.showAnimationSpeed,
-                    hideAnimationSpeed: UIKitAnimationTiming.hideAnimationSpeed
+                    hideAnimationSpeed: UIKitAnimationTiming.hideAnimationSpeed,
+                    analytics: state.analytics
                 )
             
         case .iconAndTitle(let iconImage, let iconColor, let title):
@@ -49,7 +50,8 @@ struct AirHUDSwiftUIContainer: View {
                     iconColor: iconColor,
                     title: title,
                     showAnimationSpeed: UIKitAnimationTiming.showAnimationSpeed,
-                    hideAnimationSpeed: UIKitAnimationTiming.hideAnimationSpeed
+                    hideAnimationSpeed: UIKitAnimationTiming.hideAnimationSpeed,
+                    analytics: state.analytics
                 )
             
         case .iconTitleAndButton(let iconImage, let iconColor, let title, let buttonTitle, let buttonAction):
@@ -63,6 +65,7 @@ struct AirHUDSwiftUIContainer: View {
                     buttonTitle: buttonTitle,
                     showAnimationSpeed: UIKitAnimationTiming.showAnimationSpeed,
                     hideAnimationSpeed: UIKitAnimationTiming.hideAnimationSpeed,
+                    analytics: state.analytics,
                     buttonAction: buttonAction
                 )
             
@@ -75,7 +78,8 @@ struct AirHUDSwiftUIContainer: View {
                     title: title,
                     subtitle: subtitle,
                     showAnimationSpeed: UIKitAnimationTiming.showAnimationSpeed,
-                    hideAnimationSpeed: UIKitAnimationTiming.hideAnimationSpeed
+                    hideAnimationSpeed: UIKitAnimationTiming.hideAnimationSpeed,
+                    analytics: state.analytics
                 )
         }
     }
