@@ -14,18 +14,26 @@ struct AirHUDViewModifier: ViewModifier {
     @Binding var isPresented: Bool
     let configuration: AirHUDConfiguration
     let viewModel: AirHUDViewModel
+    
     let showAnimationSpeed: Double
     let hideAnimationSpeed: Double
+    
+    var analytics: AirHUDAnalyticsBridge?
     
     init(
         isPresented: Binding<Bool>,
         configuration: AirHUDConfiguration,
         showAnimationSpeed: Double? = nil,
-        hideAnimationSpeed: Double? = nil
+        hideAnimationSpeed: Double? = nil,
+        analytics: AirHUDAnalyticsBridge? = nil
     ) {
         self._isPresented = isPresented
         self.configuration = configuration
-        self.viewModel = .init(isPresented: isPresented, configuration: configuration)
+        self.viewModel = .init(
+            isPresented: isPresented,
+            configuration: configuration,
+            analytics: analytics
+        )
         
         self.showAnimationSpeed = showAnimationSpeed ?? Constant.defaultShowAnimationSpeed
         self.hideAnimationSpeed = hideAnimationSpeed ?? Constant.defaultHideAnimationSpeed

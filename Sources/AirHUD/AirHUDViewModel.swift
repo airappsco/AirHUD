@@ -31,6 +31,7 @@ final class AirHUDViewModel: AirHUDViewModelObservable {
     
     let isPresented: Binding<Bool>
     let configuration: AirHUDConfiguration
+    var analytics: AirHUDAnalyticsBridge?
     
     private var timer: Timer?
     
@@ -64,10 +65,12 @@ final class AirHUDViewModel: AirHUDViewModelObservable {
     
     init(
         isPresented: Binding<Bool>,
-        configuration: AirHUDConfiguration
+        configuration: AirHUDConfiguration,
+        analytics: AirHUDAnalyticsBridge?
     ) {
         self.isPresented = isPresented
         self.configuration = configuration
+        self.analytics = analytics
         self.runAutoDismissIfNeeded()
     }
     
@@ -78,10 +81,20 @@ final class AirHUDViewModel: AirHUDViewModelObservable {
     func runAutoDismissIfNeeded() {
         guard configuration.dismiss.autoDismiss,
               isPresented.wrappedValue else { return }
+        
+        self.analytics?.logEvent(
+            name: AirHUDAnalyticsEvent.didShowAirHUD.rawValue,
+            params: [AirHUDAnalyticsParameter.hud.rawValue: title.text]
+        )
+        
         timer = Timer.scheduledTimer(
             withTimeInterval: self.configuration.dismiss.autoDismissDuration,
             repeats: false) { [weak self] _ in
                 self?.hide()
+                self?.analytics?.logEvent(
+                    name: AirHUDAnalyticsEvent.didHideAirHUD.rawValue,
+                    params: [AirHUDAnalyticsParameter.hud.rawValue: self?.title.text ?? ""]
+                )
         }
     }
     
