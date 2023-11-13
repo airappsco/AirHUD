@@ -6,7 +6,6 @@
 //  Copyright © 2023 AirApps. All rights reserved.
 //
 
-
 import Combine
 import UIKit
 
@@ -33,5 +32,11 @@ class HUDStateStore {
         )
         stateManagers[id] = stateManager
         return stateManager
+    }
+    
+    func dismissAllOtherHUDs(hudID: String) {
+        for (id, stateManager) in stateManagers where id != hudID && stateManager.isPresented {
+            stateManager.isPresented = false
+        }
     }
 }
