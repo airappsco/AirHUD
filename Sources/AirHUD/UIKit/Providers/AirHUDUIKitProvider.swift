@@ -48,12 +48,25 @@ public class AirHUDUIKitProvider {
     
     public func toggleAirHUD(hudID: String) {
         hudStateManagerManager.dismissAllOtherHUDs(hudID: hudID)
+        
         guard let stateManager = hudStateManagerManager.stateManagerForID(hudID) else {
             debugPrint("No AirHUD associated with the given ID")
             return
         }
         
-        stateManager.isPresented.toggle()
+        let toggleState = {
+            stateManager.isPresented.toggle()
+        }
+        
+        if stateManager.isPresented {
+            stateManager.isPresented = false
+            DispatchQueue.main.asyncAfter(
+                deadline: .now() + 0.2,
+                execute: toggleState
+            )
+        } else {
+            toggleState()
+        }
     }
 }
 
