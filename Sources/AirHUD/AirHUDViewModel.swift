@@ -84,7 +84,7 @@ final class AirHUDViewModel: AirHUDViewModelObservable {
         
         self.analytics?.logEvent(
             name: AirHUDAnalyticsEvent.didShowAirHUD.rawValue,
-            params: [AirHUDAnalyticsParameter.hud.rawValue: title.text]
+            params: [AirHUDAnalyticsParameter.hud.rawValue: title.text.removingNonAlphanumericCharacters()]
         )
         
         timer = Timer.scheduledTimer(
@@ -93,7 +93,7 @@ final class AirHUDViewModel: AirHUDViewModelObservable {
                 self?.hide()
                 self?.analytics?.logEvent(
                     name: AirHUDAnalyticsEvent.didHideAirHUD.rawValue,
-                    params: [AirHUDAnalyticsParameter.hud.rawValue: self?.title.text ?? ""]
+                    params: [AirHUDAnalyticsParameter.hud.rawValue: self?.title.text.removingNonAlphanumericCharacters() ?? ""]
                 )
         }
     }
