@@ -102,6 +102,6 @@ private extension AirHUDViewModelTests {
     func getSut(for mode: AirHUDMode) -> any AirHUDViewModelObservable {
         var bindingValue = false
         let binding = Binding(get: { bindingValue }, set: { bindingValue = $0 })
-        return AirHUDViewModel(isPresented: binding, configuration: .init(mode: mode))
+        return AirHUDViewModel(isPresented: binding, configuration: .init(mode: mode), analytics: nil)
     }
 }

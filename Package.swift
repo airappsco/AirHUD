@@ -33,7 +33,7 @@ let package = Package(
             name: "AirHUDTests",
             dependencies: [
                 "AirHUD",
-                .product(name: "SnapshotTesting", package: "swift-snapshot-testing")
+//                .product(name: "SnapshotTesting", package: "swift-snapshot-testing")
             ],
             path: "Tests/AirHUDTests"
         )
