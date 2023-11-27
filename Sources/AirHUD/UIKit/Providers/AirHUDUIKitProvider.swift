@@ -124,7 +124,7 @@ extension AirHUDUIKitProvider {
             delay: 0,
             usingSpringWithDamping: 0.7,
             initialSpringVelocity: 0.6,
-            options: [.curveEaseInOut],
+            options: [.curveEaseInOut, .allowUserInteraction],
             animations: {
                 hudView?.transform = transform
             },
@@ -140,7 +140,7 @@ extension AirHUDUIKitProvider {
             delay: animateImmediately ? 0 : 1,
             usingSpringWithDamping: 0.5,
             initialSpringVelocity: 0.5,
-            options: [.curveEaseInOut],
+            options: [.curveEaseInOut, .allowUserInteraction],
             animations: {
                 hudView?.transform = CGAffineTransform(translationX: 0, y: -200)
             },

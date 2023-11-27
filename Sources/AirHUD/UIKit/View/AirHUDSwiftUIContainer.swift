@@ -24,6 +24,7 @@ struct AirHUDSwiftUIContainer: View {
     var body: some View {
         if state.isPresented {
             toHudView()
+                .frame(height: Layout.interactionHeight)
         } else {
             EmptyView()
         }
@@ -90,5 +91,9 @@ private extension AirHUDSwiftUIContainer {
      enum UIKitAnimationTiming {
         static let showAnimationSpeed = 3.0
         static let hideAnimationSpeed = 1.4
+    }
+    
+    enum Layout {
+        static let interactionHeight = 100.0
     }
 }
