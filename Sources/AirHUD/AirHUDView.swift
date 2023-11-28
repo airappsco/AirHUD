@@ -166,7 +166,7 @@ private extension AirHudView {
         case .iconAndTitle:
             return Layout.subtitleLineLimit
         default:
-            return Layout.titleLineLimit
+            return viewModel.title.maxNumberOfLines
         }
     }
 }
