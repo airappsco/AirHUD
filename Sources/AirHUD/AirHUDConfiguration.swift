@@ -9,6 +9,7 @@
 import SwiftUI
 
 /// Mode enum that provides easy to populate AirHUD configuration.
+@available(iOS 13.0, *)
 public enum AirHUDMode {
 
     /// Icon and title mode.
@@ -56,6 +57,7 @@ public enum AirHUDMode {
 }
 
 /// Configuration model of AirHUD.
+@available(iOS 13.0, *)
 public struct AirHUDConfiguration {
     
     /// Mode that determines the appearance and content of AirHUD.
@@ -106,6 +108,7 @@ public struct AirHUDConfiguration {
 }
 
 /// Model that represents hud icon configuration.
+@available(iOS 13.0, *)
 public struct IconConfiguration {
     
     /// Image which will show on AirHUD.
@@ -149,6 +152,7 @@ public struct IconConfiguration {
 }
 
 /// Model that represents hud title configuration.
+@available(iOS 13.0, *)
 public struct TitleConfiguration {
     
     /// String which will show as title on AirHUD.
@@ -160,6 +164,9 @@ public struct TitleConfiguration {
     /// Font of the title.
     public var font: Font
     
+    /// Maximum number of lines
+    public var maxNumberOfLines: Int
+    
     /// Creates a title configuration model for AirHUD
     /// - Parameters:
     ///   - text: String which will show as title on AirHUD.
@@ -168,15 +175,18 @@ public struct TitleConfiguration {
     public init(
         text: String,
         color: Color = Color(.label),
-        font: Font = .headline.weight(.semibold)
+        font: Font = .headline.weight(.semibold),
+        maxNumberOfLines: Int = 1
     ) {
         self.text = text
         self.color = color
         self.font = font
+        self.maxNumberOfLines = maxNumberOfLines
     }
 }
 
 /// Model that represents hud subtitle configuration.
+@available(iOS 13.0, *)
 public struct SubtitleConfiguration {
     
     /// String which will show as subtitle on AirHUD.
@@ -205,6 +215,7 @@ public struct SubtitleConfiguration {
 }
 
 /// Model that represents hud button configuration.
+@available(iOS 13.0, *)
 public struct ButtonConfiguration {
     
     /// String which will show as button's title on AirHUD.
@@ -273,6 +284,7 @@ public struct DismissConfiguration {
 }
 
 /// Model that represents hud general configuration.
+@available(iOS 13.0, *)
 public struct GeneralConfiguration {
     
     /// Background color of AirHUD.
@@ -294,7 +306,7 @@ public struct GeneralConfiguration {
     ///   - horizontalAlignment: Value that refers horizontal alignment of the hud's content. Initial value is center.
     ///   - verticalAlignment: Value that refers vertical alignment of the hud's content. Initial value is center.
     public init(
-        backgroundColor: Color = Color(uiColor: .tertiarySystemBackground),
+        backgroundColor: Color = Color(UIColor.tertiarySystemBackground),
         topOffset: Double = 16.0,
         horizontalAlingment: HorizontalAlignment = .center,
         verticalAlignment: VerticalAlignment = .center
