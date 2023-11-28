@@ -164,6 +164,9 @@ public struct TitleConfiguration {
     /// Font of the title.
     public var font: Font
     
+    /// Maximum number of lines
+    public var maxNumberOfLines: Int
+    
     /// Creates a title configuration model for AirHUD
     /// - Parameters:
     ///   - text: String which will show as title on AirHUD.
@@ -172,11 +175,13 @@ public struct TitleConfiguration {
     public init(
         text: String,
         color: Color = Color(.label),
-        font: Font = .headline.weight(.semibold)
+        font: Font = .headline.weight(.semibold),
+        maxNumberOfLines: Int = 1
     ) {
         self.text = text
         self.color = color
         self.font = font
+        self.maxNumberOfLines = maxNumberOfLines
     }
 }
 
