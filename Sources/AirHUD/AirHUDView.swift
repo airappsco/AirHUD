@@ -140,7 +140,6 @@ struct AirHudView<ViewModel: AirHUDViewModelObservable>: View {
     }
     
     enum Layout {
-        static var titleLineLimit: Int { 1 }
         static var subtitleLineLimit: Int { 2 }
         static var horizontalItemSpacing: CGFloat { 12 }
         static var verticalItemSpacing: CGFloat { 2 }
@@ -162,11 +161,6 @@ struct AirHudView<ViewModel: AirHUDViewModelObservable>: View {
 @available(iOS 13.0, *)
 private extension AirHudView {
     func lineLimitOfTitle() -> Int {
-        switch viewModel.mode {
-        case .iconAndTitle:
-            return Layout.subtitleLineLimit
-        default:
-            return Layout.titleLineLimit
-        }
+        viewModel.title.maxNumberOfLines
     }
 }
