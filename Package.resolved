@@ -1,0 +1,32 @@
+{
+  "pins" : [
+    {
+      "identity" : "airnetwork",
+      "kind" : "remoteSourceControl",
+      "location" : "git@github.com:airappsco/AirNetwork.git",
+      "state" : {
+        "revision" : "b51094c2e948ceb6698175d7bd4d4c95867a0c63",
+        "version" : "1.1.2"
+      }
+    },
+    {
+      "identity" : "swift-snapshot-testing",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/pointfreeco/swift-snapshot-testing.git",
+      "state" : {
+        "revision" : "bb0ea08db8e73324fe6c3727f755ca41a23ff2f4",
+        "version" : "1.14.2"
+      }
+    },
+    {
+      "identity" : "swift-syntax",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-syntax.git",
+      "state" : {
+        "revision" : "ffa3cd6fc2aa62adbedd31d3efaf7c0d86a9f029",
+        "version" : "509.0.1"
+      }
+    }
+  ],
+  "version" : 2
+}
